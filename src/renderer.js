@@ -47,6 +47,7 @@
 
     // Private Variables
     var tableBody = targetTable.find('tbody');
+    var isEditMode = false;
     var generateStaticRow = function(lineItemIndex){
       var lineItem = that.order.lineItems[lineItemIndex];
       var newRowObj = $('<tr>');
@@ -65,6 +66,13 @@
       editLink.click(editLink.editThisRow);
       newRowObj.append($('<td>').append($('<span>').append(editLink)));
 
+      // make the delete link
+      var deleteLink = $('<a>');
+      deleteLink.attr('class', 'btn btn-sm btn-danger glyphicon glyphicon-remove');
+      deleteLink.removeThisRow = function(){ that.removeRow(lineItemIndex) };
+      deleteLink.click(deleteLink.removeThisRow);
+      newRowObj.append($('<td>').append($('<span>').append(deleteLink)));
+
       return newRowObj;
     };
     var generateEditRow = function(lineItemIndex){
@@ -73,7 +81,7 @@
       newRowObj.lineItem = lineItem;
       // make the cancel link
       var cancelLink = $('<a>');
-      cancelLink.attr('class', 'btn btn-sm btn-danger glyphicon glyphicon-remove');
+      cancelLink.attr('class', 'btn btn-sm btn-danger glyphicon glyphicon-arrow-left');
       cancelLink.abortEdit = function(){ that.refreshTable() };
       cancelLink.click(cancelLink.abortEdit);
 
@@ -86,6 +94,7 @@
       newRowObj.append($('<td>').append($('<span>').html('')));
       newRowObj.append($('<td>').append($('<span>').html('')));
       newRowObj.append($('<td>').append($('<span>').append($('<input>').attr('class','quantity form-control').attr('type','text').attr('value',lineItem.quantity))));
+      newRowObj.append($('<td>'));
 
       // make the edit link
       var editLink = $('<a>');
@@ -93,25 +102,24 @@
       editLink.saveThisRow = function(){ that.saveRow(newRowObj) };
       editLink.click(editLink.saveThisRow);
       newRowObj.append($('<td>').append($('<span>').append(editLink)));
-
       return newRowObj;
     };
+
     // Public Methods
     that.refreshTable = function() {
+      isEditMode = false;
       tableBody.empty();
       for (var i = 0; i < order.lineItems.length; i++){
         tableBody.append(generateStaticRow(i));
       }
     };
     that.editRow =  function(i) {
-
-      var editRow = generateEditRow(i);
-      tableBody.find('tr').eq(i).replaceWith(editRow);
-      editRow.find('.focused').focus();
-      // editRow.hide();
-      // tableBody.append(editRow);
-      // console.log(editRow.parent());
-      // rowToEdit.replaceWith(editRow);
+      if (!isEditMode){
+        isEditMode = true;
+        var editRow = generateEditRow(i);
+        tableBody.find('tr').eq(i).replaceWith(editRow);
+        editRow.find('.focused').focus();
+      }
     };
     that.saveRow = function(rowToSave){
       var lineItem = rowToSave.lineItem;
@@ -121,12 +129,26 @@
       var newQty = rowToSave.find('.quantity').val();
       lineItem.item.description = newDesc;
       lineItem.item.ASIN = newASIN;
-      lineItem.item.price = newPrice;
+      lineItem.item.cost.price = newPrice;
       lineItem.quantity = newQty;
-
       that.refreshTable();
     };
+    that.addRow = function(lineItem){
+      if (!isEditMode){
+        order.lineItems.push(lineItem);
+        isEditMode = true;
+        var editRow = generateEditRow(order.lineItems.length - 1);
+        tableBody.append(editRow);
+        editRow.find('.focused').focus();
+      }
+    };
+    that.removeRow = function(i){
+      if (!isEditMode){
+        order.lineItems.splice(i, 1);
+      }
 
+      that.refreshTable()
+    };
     return that;
   };
 

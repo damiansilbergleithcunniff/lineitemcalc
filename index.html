@@ -41,7 +41,7 @@
             <div class="col-lg-2"><input type="text" class=""></div>
         </div>
         <div class="row">
-            <div class="pull-right col-lg-2"><a class="btn btn-success btn-sm" onclick="addline()">Add Line Item</a></div>
+            <div class="pull-right col-lg-2"><a class="btn btn-success btn-sm" id="button_add_row">Add Line Item</a></div>
         </div>
         <div class="row">
             <table class="table table-condensed" id="theTable">
@@ -54,6 +54,7 @@
                     <th>Tax</th>
                     <th>Shipping</th>
                     <th>Quantity</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -96,6 +97,7 @@
 //        }
 
         var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'));
+        $('#button_add_row').click(function(){renderedOrder.addRow(lineItemLib.lineItem(lineItemLib.item('','',0),0))});
         renderedOrder.refreshTable();
       });
 
