@@ -98,9 +98,18 @@
     return thisOrder;
   };
 
-  module.exports.cost = cost;
-  module.exports.item = item;
-  module.exports.lineItem = lineItem;
-  module.exports.order = order;
+  if (typeof(module) === 'undefined'){
+    window.lineItemLib = {
+      cost: cost,
+      item: item,
+      lineItem: lineItem,
+      order: order
+    }
+  } else {
+    module.exports.cost = cost;
+    module.exports.item = item;
+    module.exports.lineItem = lineItem;
+    module.exports.order = order;
+  }
 
 }());
