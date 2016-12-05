@@ -44,7 +44,7 @@
             <div class="pull-right col-lg-2"><a class="btn btn-success btn-sm" onclick="addline()">Add Line Item</a></div>
         </div>
         <div class="row">
-            <table class="table table-condensed">
+            <table class="table table-condensed" id="theTable">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -53,6 +53,7 @@
                     <th>Price</th>
                     <th>Tax</th>
                     <th>Shipping</th>
+                    <th>Quantity</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -90,9 +91,12 @@
 
         var order = lineItemLib.order(lineItems, 116.00, 5.99, 8.54);
 
-        for (var i = 0; i < lineItems.length; i++){
-          lineItemRenderer.renderExistingLineItem('theTableBody', lineItems[i], i+1)
-        }
+//        for (var i = 0; i < lineItems.length; i++){
+//          lineItemRenderer.renderExistingLineItem('theTableBody', lineItems[i], i+1)
+//        }
+
+        var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'));
+        renderedOrder.refreshTable();
       });
 
     </script>
