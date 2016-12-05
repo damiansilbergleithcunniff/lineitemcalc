@@ -92,11 +92,12 @@
 
         var order = lineItemLib.order(lineItems, 116.00, 5.99, 8.54);
 
-//        for (var i = 0; i < lineItems.length; i++){
+        //        for (var i = 0; i < lineItems.length; i++){
 //          lineItemRenderer.renderExistingLineItem('theTableBody', lineItems[i], i+1)
 //        }
 
         var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'));
+        $(document).keyup(renderedOrder.handleKeyPress);
         $('#button_add_row').click(function(){renderedOrder.addRow(lineItemLib.lineItem(lineItemLib.item('','',0),0))});
         renderedOrder.refreshTable();
       });
