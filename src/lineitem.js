@@ -30,6 +30,9 @@
       cost: cost()
     };
     thisItem.cost.price = price;
+    thisItem.isValid = function () {
+      return (thisItem.ASIN && thisItem.description && Number(thisItem.cost.price))
+    };
     return thisItem;
   };
 
@@ -47,7 +50,9 @@
       tax: function() { return thisLineItem.item.cost.tax * thisLineItem.quantity },
       shipping: function() { return thisLineItem.item.cost.shipping * thisLineItem.quantity }
     };
-
+    thisLineItem.isValid = function () {
+      return item && item.isValid() && Number(quantity);
+    };
     return thisLineItem;
   };
 

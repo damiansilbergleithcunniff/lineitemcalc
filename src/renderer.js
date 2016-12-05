@@ -107,6 +107,21 @@
       return newRowObj;
     };
 
+    var parseRow = function(rowToValidate) {
+      var that = {};
+      that.index = rowToValidate.index;
+      that.lineItem = rowToValidate.lineItem;
+      that.description = rowToValidate.find('.description').val();
+      that.ASIN = rowToValidate.find('.ASIN').val();
+      that.price = Number(rowToValidate.find('.price').val());
+      that.quantity = Number(rowToValidate.find('.quantity').val());
+      if (that.description || that.ASIN || that.price || that.quantity ){
+        return that;
+      }
+
+      return null;
+    };
+
     // Public Methods
     that.refreshTable = function() {
       rowUnderEdit = null;
@@ -124,22 +139,16 @@
       }
     };
     that.saveRow = function(rowToSave){
-      var lineItem = rowToSave.lineItem;
-      var newDesc = rowToSave.find('.description').val();
-      var newASIN = rowToSave.find('.ASIN').val();
-      var newPrice = rowToSave.find('.price').val();
-      var newQty = rowToSave.find('.quantity').val();
-      if (newDesc || newASIN || Number(newPrice) || Number(newQty)){
-        lineItem.item.description = newDesc;
-        lineItem.item.ASIN = newASIN;
-        lineItem.item.cost.price = newPrice;
-        lineItem.quantity = newQty;
-        that.refreshTable();
-      } else {
-        // remove the row
+      var rowData = parseRow(rowToSave);
+      if ( ! rowData ) {
         that.removeRow(rowToSave.index);
       }
-
+      // save the changes to the lineitem
+      rowToSave.lineItem.item.description = rowData.description;
+      rowToSave.lineItem.item.ASIN = rowData.ASIN;
+      rowToSave.lineItem.item.cost.price = rowData.price;
+      rowToSave.lineItem.quantity = rowData.quantity;
+      that.refreshTable();
     };
     that.addRow = function(lineItem){
       if (!rowUnderEdit){
@@ -160,7 +169,11 @@
       switch (e.keyCode){
         case 27:  // escape key
           if (rowUnderEdit){
-            that.refreshTable();
+            if(!parseRow(rowUnderEdit) && !rowUnderEdit.lineItem.isValid()){
+              that.removeRow(rowUnderEdit.index);
+            } else {
+              that.refreshTable();
+            }
           }
           break;
         case 13:  // enter key
