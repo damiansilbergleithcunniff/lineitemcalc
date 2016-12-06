@@ -39,15 +39,24 @@
   // Returns a renderedOrder which is used to control
   //  the UI
   // Pass in the order and the target JQuery table element
-  var renderedOrder = function(order, targetTable) {
+  var renderedOrder = function(order, lineItemTable, orderDisplay) {
     var that = {
       order: order,
-      targetTable: targetTable
+      lineItemTable: lineItemTable,
+      orderDisplay: orderDisplay
     };
 
     // Private Variables
-    var tableBody = targetTable.find('tbody');
+    var tableBody = lineItemTable.find('tbody');
+    var lineItemSumCell = lineItemTable.find('#line-item-sum');
     var rowUnderEdit = null;
+    // Order display elements
+    var orderSubtotalInput = orderDisplay.find('#order-subtotal');
+    var orderTaxInput = orderDisplay.find('#order-tax');
+    var orderShippingInput = orderDisplay.find('#order-shipping');
+    var orderTotalInput = orderDisplay.find('#order-total');
+
+    // row management functions
     var generateStaticRow = function(lineItemIndex){
       var lineItem = that.order.lineItems[lineItemIndex];
       var newRowObj = $('<tr>');
@@ -106,7 +115,6 @@
       newRowObj.append($('<td>').append($('<span>').append(editLink)));
       return newRowObj;
     };
-
     var parseRow = function(rowToValidate) {
       var that = {};
       that.index = rowToValidate.index;
@@ -122,12 +130,47 @@
       return null;
     };
 
+    // order display management
+    var refreshOrderTotal = function() {
+      orderTotalInput.val(that.order.total());
+      order.updateLineItems();
+      that.refreshTable();
+    };
+    var wireUpOrderUI = function() {
+      orderSubtotalInput.on('input',function(e) {
+        that.order.subtotal = Number(orderSubtotalInput.val());
+        refreshOrderTotal()
+      });
+      orderTaxInput.on('input', function() {
+        that.order.tax = Number(orderTaxInput.val());
+        refreshOrderTotal()
+      });
+      orderShippingInput.on('input', function() {
+        that.order.shipping = Number(orderShippingInput.val());
+        refreshOrderTotal()
+      });
+    };
+
     // Public Methods
     that.refreshTable = function() {
       rowUnderEdit = null;
       tableBody.empty();
+      var orderLineItemSum = 0;
       for (var i = 0; i < order.lineItems.length; i++){
         tableBody.append(generateStaticRow(i));
+        orderLineItemSum += order.lineItems[i].cost.price();
+      }
+      // manage the line item sum cell
+      if (order.lineItems.length === 0){
+        lineItemSumCell.hide();
+      } else {
+        lineItemSumCell.text(orderLineItemSum);
+        if (orderLineItemSum === order.subtotal){
+          lineItemSumCell.removeClass('danger').addClass('success');
+        } else {
+          lineItemSumCell.removeClass('success').addClass('danger');
+        }
+        lineItemSumCell.show();
       }
     };
     that.editRow =  function(i) {
@@ -148,6 +191,7 @@
       rowToSave.lineItem.item.ASIN = rowData.ASIN;
       rowToSave.lineItem.item.cost.price = rowData.price;
       rowToSave.lineItem.quantity = rowData.quantity;
+      order.updateLineItems();
       that.refreshTable();
     };
     that.addRow = function(lineItem){
@@ -162,7 +206,6 @@
     };
     that.removeRow = function(i){
       order.lineItems.splice(i, 1);
-
       that.refreshTable()
     };
     that.handleKeyPress = function(e) {
@@ -187,8 +230,16 @@
           // nothing
       }
     };
-
-
+    that.updateOrderUI = function(){
+      orderSubtotalInput.val(that.order.subtotal);
+      orderTaxInput.val(that.order.tax);
+      orderShippingInput.val(that.order.shipping);
+      refreshOrderTotal();
+    };
+    // wireup the UI for orders
+    wireUpOrderUI();
+    // and update them so that they are current
+    that.updateOrderUI();
     return that;
   };
 

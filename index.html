@@ -32,35 +32,84 @@
 
 <body>
     <div class="container theme-showcase" role="main">
-        <div class="row">
-            <div class="col-lg-2"><span>Order Total:</span></div>
-            <div class="col-lg-2"><input type="text" class=""></div>
-            <div class="col-lg-2"><span>Tax:</span></div>
-            <div class="col-lg-2"><input type="text" class=""></div>
-            <div class="col-lg-2"><span>Shipping:</span></div>
-            <div class="col-lg-2"><input type="text" class=""></div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Order Totals</div>
+            <div class="panel-body">
+                <div class="form-inline" id="order-display">
+                    <div class="form-group col-lg-3" >
+                        <label for="order-subtotal">Order Subtotal: </label><br />
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="order-subtotal" placeholder="Subtotal">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3" >
+                        <label for="order-shipping">Order Shipping: </label><br />
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="order-shipping" placeholder="Shipping">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3" >
+                        <label for="order-tax">Order Tax: </label><br />
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="order-tax" placeholder="Tax">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3" >
+                        <label for="order-total">Order Total: </label><br />
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="order-total" placeholder="Total">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="pull-right col-lg-2"><a class="btn btn-success btn-sm" id="button_add_row">Add Line Item</a></div>
-        </div>
-        <div class="row">
-            <table class="table table-condensed" id="theTable">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Description</th>
-                    <th>ASIN</th>
-                    <th>Price</th>
-                    <th>Tax</th>
-                    <th>Shipping</th>
-                    <th>Quantity</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody id="theTableBody">
-                </tbody>
-            </table>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-10"><span>Order Line Items</span></div>
+                    <div class="col-lg-2"><a class="btn btn-success btn-xs" id="button_add_row">Add Line Item</a></div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <table class="table table-condensed" id="theTable">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Description</th>
+                            <th>ASIN</th>
+                            <th>Price</th>
+                            <th>Shipping</th>
+                            <th>Tax</th>
+                            <th>Quantity</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="theTableBody">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td id="line-item-sum">###</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+            </div>
         </div>
     </div> <!-- /container -->
 
@@ -96,7 +145,7 @@
 //          lineItemRenderer.renderExistingLineItem('theTableBody', lineItems[i], i+1)
 //        }
 
-        var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'));
+        var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'), $('#order-display'));
         $(document).keyup(renderedOrder.handleKeyPress);
         $('#button_add_row').click(function(){renderedOrder.addRow(lineItemLib.lineItem(lineItemLib.item('','',0),0))});
         renderedOrder.refreshTable();

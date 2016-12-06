@@ -58,7 +58,7 @@
 
   // type: Factory Function
   // desc: An order is made of line items with shipping and tax
-  var order = function(lineItems, baseOrderTotal, shipping, tax) {
+  var order = function(lineItems, subtotal, shipping, tax) {
 
     //// Input validation
     // lineitems must be an array
@@ -69,36 +69,46 @@
     // // verify that the order is properly priced
     // // and that all of our line items are included
     var lineItemPriceTotal = 0.00;
-    var totalItemCount = 0;
+    var quantity = 0;
     lineItems.forEach(function(lineItem) {
       lineItemPriceTotal += lineItem.cost.price();
-      totalItemCount += lineItem.quantity;
+      quantity += lineItem.quantity;
     });
-    if (lineItemPriceTotal !== baseOrderTotal){
+    if (lineItemPriceTotal !== subtotal){
       throw new Error('Line item price total (' + lineItemPriceTotal +
-        ') does not equal base order price (' + baseOrderTotal + ') ')
+        ') does not equal base order price (' + subtotal + ') ')
     }
 
     //// Create order object
     var thisOrder = {
       lineItems: lineItems,
-      baseOrderTotal: baseOrderTotal,
+      subtotal: subtotal,
       shipping: shipping,
       tax: tax,
-      total: function(){ return this.baseOrderTotal + this.shipping + this.tax },
-      totalItemCount: totalItemCount
+      total: function(){ return this.subtotal + this.shipping + this.tax },
+      quantity: function() { 
+        var itemCount = 0;
+        lineItems.forEach(function(lineItem) { itemCount += lineItem.quantity; });
+        return itemCount;
+      }
     };
 
-    // get the shipping cost per item and the tax rate that the order was taxed at
-    var perItemShipping = thisOrder.totalItemCount && ( thisOrder.shipping / thisOrder.totalItemCount );
-    var taxRate = ( thisOrder.baseOrderTotal + thisOrder.shipping )  &&
-                    thisOrder.tax / ( thisOrder.baseOrderTotal + thisOrder.shipping ) ;
+    thisOrder.updateLineItems = function(){
+      var orderQuantity = thisOrder.quantity();
+      // get the shipping cost per item and the tax rate that the order was taxed at
+      var perItemShipping = orderQuantity && ( thisOrder.shipping / orderQuantity );
+      var taxRate = ( thisOrder.subtotal + thisOrder.shipping )  &&
+        thisOrder.tax / ( thisOrder.subtotal + thisOrder.shipping ) ;
 
-    // assign to the item in each of the lineItems
-    lineItems.forEach(function(lineItem) {
-      lineItem.item.cost.shipping = perItemShipping ;
-      lineItem.item.cost.tax = (lineItem.item.cost.price + perItemShipping) * taxRate;
-    });
+      // assign to the item in each of the lineItems
+      lineItems.forEach(function(lineItem) {
+        lineItem.item.cost.shipping = perItemShipping ;
+        lineItem.item.cost.tax = (lineItem.item.cost.price + perItemShipping) * taxRate;
+      });
+    };
+
+    // update all the line items the first time we run this
+    thisOrder.updateLineItems();
 
     return thisOrder;
   };
