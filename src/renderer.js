@@ -1,7 +1,7 @@
 /**
  * Created by damian on 12/4/16.
  */
-(function(){
+define(function(){
   var renderExistingLineItem = function(targetID, lineItem, index){
     var target = $('#theTableBody');
     var newRow = "<tr>" +
@@ -245,9 +245,17 @@
 
 
 
-  window.lineItemRenderer = {
+  // window.lineItemRenderer = {
+  //   renderEditLineItem: renderEditLineItem,
+  //   renderExistingLineItem: renderExistingLineItem,
+  //   renderedOrder: renderedOrder
+  // }
+
+  //AMD
+  return {
     renderEditLineItem: renderEditLineItem,
     renderExistingLineItem: renderExistingLineItem,
     renderedOrder: renderedOrder
   }
-})();
+
+});

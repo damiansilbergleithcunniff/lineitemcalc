@@ -1,0 +1,13 @@
+{
+  "name": "line-item-calc",
+  "version": "0.1.0",
+  "description": "A calculator to determine the shipping and tax for each item in an order",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "author": "",
+  "license": "ISC"
+}

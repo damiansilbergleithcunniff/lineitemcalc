@@ -13,9 +13,9 @@
     <title>Theme Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="src/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="node_modules/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="src/vendor/bootstrap-3.3.7-dist/css/bootstrap-theme.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="theme.css" rel="stylesheet">
@@ -26,8 +26,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="src/lineitem.js"></script>
-    <script src="src/renderer.js"></script>
+    <script data-main="index.js" src="node_modules/requirejs/require.js"></script>
 </head>
 
 <body>
@@ -119,39 +118,8 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="node_modules/bootstrap/vendor/jquery.min.js"><\/script>')</script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="src/vendor/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="node_modules/bootstrap/ie10-viewport-bug-workaround.js"></script>
-    <script>
-      $(function() {
-        var candle1 = lineItemLib.item('111625166', 'Roasted Chestnut & Cherries 3-Wick Candle', 8.5);
-        var candle2 = lineItemLib.item('86718036','Midnight Blue Citrus 3-Wick Candle', 8.5);
-        var candle3 = lineItemLib.item("111625186", "Frosty Air 3-Wick Candle", 8.5);
-        var candle4 = lineItemLib.item("111625156", "Smoked Vanilla 3-Wick Candle", 8.5);
-        var candle5 = lineItemLib.item("111625146", "Iced Vanilla Woods 3-Wick Candle", 8.5);
-        var other = lineItemLib.item("105391086", "White Barn Fresh 6-Pack Wallflowers Sampler", 22.50);
-
-        var lineItems = [
-          lineItemLib.lineItem(candle1, 2),
-          lineItemLib.lineItem(candle2, 3),
-          lineItemLib.lineItem(candle3, 2),
-          lineItemLib.lineItem(candle4, 2),
-          lineItemLib.lineItem(candle5, 2),
-          lineItemLib.lineItem(other, 1)];
-
-        var order = lineItemLib.order(lineItems, 116.00, 5.99, 8.54);
-
-        //        for (var i = 0; i < lineItems.length; i++){
-//          lineItemRenderer.renderExistingLineItem('theTableBody', lineItems[i], i+1)
-//        }
-
-        var renderedOrder = lineItemRenderer.renderedOrder(order, $('#theTable'), $('#order-display'));
-        $(document).keyup(renderedOrder.handleKeyPress);
-        $('#button_add_row').click(function(){renderedOrder.addRow(lineItemLib.lineItem(lineItemLib.item('','',0),0))});
-        renderedOrder.refreshTable();
-      });
-
-    </script>
-
 </body>
 </html>

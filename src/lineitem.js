@@ -1,7 +1,7 @@
 /**
  * Created by damian on 12/4/16.
  */
-(function() {
+define(function() {
 
   var roundCurrency = function(val) {
     var tmp = val * 100;
@@ -113,18 +113,26 @@
     return thisOrder;
   };
 
-  if (typeof(module) === 'undefined'){
-    window.lineItemLib = {
-      cost: cost,
-      item: item,
-      lineItem: lineItem,
-      order: order
-    }
-  } else {
-    module.exports.cost = cost;
-    module.exports.item = item;
-    module.exports.lineItem = lineItem;
-    module.exports.order = order;
-  }
+  // if (typeof(module) === 'undefined'){
+  //   window.lineItemLib = {
+  //     cost: cost,
+  //     item: item,
+  //     lineItem: lineItem,
+  //     order: order
+  //   }
+  // } else {
+  //   module.exports.cost = cost;
+  //   module.exports.item = item;
+  //   module.exports.lineItem = lineItem;
+  //   module.exports.order = order;
+  // }
 
-}());
+  //AMD
+  return {
+    cost: cost,
+    item: item,
+    lineItem: lineItem,
+    order: order
+  };
+
+});
