@@ -1,7 +1,7 @@
 /**
  * Created by damian on 12/4/16.
  */
-define(function(){
+define(['accounting'], function(accounting){
   var renderExistingLineItem = function(targetID, lineItem, index){
     var target = $('#theTableBody');
     var newRow = "<tr>" +
@@ -65,9 +65,9 @@ define(function(){
       newRowObj.append($('<td>').append($('<span>').html(lineItemIndex)));
       newRowObj.append($('<td>').append($('<span>').html(lineItem.description)));
       newRowObj.append($('<td>').append($('<span>').html(lineItem.ASIN)));
-      newRowObj.append($('<td>').append($('<span>').html(lineItem.item.cost.price)));
-      newRowObj.append($('<td>').append($('<span>').html(lineItem.item.cost.shipping)));
-      newRowObj.append($('<td>').append($('<span>').html(lineItem.item.cost.tax)));
+      newRowObj.append($('<td>').append($('<span>').html(accounting.formatMoney(lineItem.item.cost.price))));
+      newRowObj.append($('<td>').append($('<span>').html(accounting.formatMoney(lineItem.item.cost.shipping))));
+      newRowObj.append($('<td>').append($('<span>').html(accounting.formatMoney(lineItem.item.cost.tax))));
       newRowObj.append($('<td>').append($('<span>').html(lineItem.quantity)));
       // make the edit link
       var editLink = $('<a>');
@@ -99,7 +99,7 @@ define(function(){
       newRowObj.append($('<td>').append($('<span>').append(cancelLink)));
       newRowObj.append($('<td>').append($('<span>').append($('<input>').attr('class','description focused form-control').attr('type','text').attr('value',lineItem.description))));
       newRowObj.append($('<td>').append($('<span>').append($('<input>').attr('class','ASIN form-control').attr('type','text').attr('value',lineItem.ASIN))));
-      newRowObj.append($('<td>').append($('<span>').append($('<input>').attr('class','price form-control').attr('type','text').attr('value',lineItem.item.cost.price))));
+      newRowObj.append($('<td>').append($('<span>').append($('<input>').attr('class','price form-control').attr('type','text').attr('value',accounting.toFixed(lineItem.item.cost.price,2)))));
       // newRowObj.append($('<td>').append($('<span>').html(lineItem.item.cost.shipping)));
       // newRowObj.append($('<td>').append($('<span>').html(lineItem.item.cost.tax)));
       newRowObj.append($('<td>').append($('<span>').html('')));
@@ -132,7 +132,7 @@ define(function(){
 
     // order display management
     var refreshOrderTotal = function() {
-      orderTotalInput.val(that.order.total());
+      orderTotalInput.val(accounting.toFixed(that.order.total(),2));
       order.updateLineItems();
       that.refreshTable();
     };
@@ -141,13 +141,24 @@ define(function(){
         that.order.subtotal = Number(orderSubtotalInput.val());
         refreshOrderTotal()
       });
+      orderSubtotalInput.on('blur',function(e) {
+        orderSubtotalInput.val(accounting.toFixed(that.order.subtotal, 2));
+      });
+
       orderTaxInput.on('input', function() {
         that.order.tax = Number(orderTaxInput.val());
         refreshOrderTotal()
       });
+      orderTaxInput.on('blur',function(e) {
+        orderTaxInput.val(accounting.toFixed(that.order.tax, 2));
+      });
+
       orderShippingInput.on('input', function() {
         that.order.shipping = Number(orderShippingInput.val());
         refreshOrderTotal()
+      });
+      orderShippingInput.on('blur',function(e) {
+        orderShippingInput.val(accounting.toFixed(that.order.shipping, 2));
       });
     };
 
@@ -164,7 +175,7 @@ define(function(){
       if (order.lineItems.length === 0){
         lineItemSumCell.hide();
       } else {
-        lineItemSumCell.text(orderLineItemSum);
+        lineItemSumCell.text(accounting.formatMoney(orderLineItemSum));
         if (orderLineItemSum === order.subtotal){
           lineItemSumCell.removeClass('danger').addClass('success');
         } else {
@@ -231,9 +242,9 @@ define(function(){
       }
     };
     that.updateOrderUI = function(){
-      orderSubtotalInput.val(that.order.subtotal);
-      orderTaxInput.val(that.order.tax);
-      orderShippingInput.val(that.order.shipping);
+      orderSubtotalInput.val(accounting.toFixed(that.order.subtotal, 2));
+      orderTaxInput.val(accounting.toFixed(that.order.tax, 2));
+      orderShippingInput.val(accounting.toFixed(that.order.shipping, 2));
       refreshOrderTotal();
     };
     // wireup the UI for orders

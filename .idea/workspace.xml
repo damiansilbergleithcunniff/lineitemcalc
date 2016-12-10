@@ -2,129 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12d083ca-6b05-4918-99f6-db602e78140c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap-theme.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/dist/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/bs-commonjs-generator.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/bs-glyphicons-data-generator.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/bs-lessdoc-parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/bs-raw-files-generator.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/change-version.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/configBridge.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/npm-shrinkwrap.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/grunt/sauce_browsers.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/affix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/alert.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/collapse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/popover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/scrollspy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/tab.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/js/transition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/alerts.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/badges.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/bootstrap.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/breadcrumbs.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/button-groups.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/buttons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/carousel.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/close.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/code.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/component-animations.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/dropdowns.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/forms.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/glyphicons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/grid.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/input-groups.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/jumbotron.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/labels.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/list-group.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/media.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/alerts.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/background-variant.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/border-radius.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/buttons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/center-block.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/clearfix.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/forms.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/gradients.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/grid-framework.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/grid.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/hide-text.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/image.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/labels.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/list-group.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/nav-divider.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/nav-vertical-align.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/opacity.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/pagination.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/panels.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/progress-bar.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/reset-filter.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/reset-text.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/resize.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/responsive-visibility.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/size.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/tab-focus.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/table-row.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/text-emphasis.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/text-overflow.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/mixins/vendor-prefixes.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/modals.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/navbar.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/navs.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/normalize.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/pager.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/pagination.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/panels.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/popovers.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/print.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/progress-bars.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/responsive-embed.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/responsive-utilities.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/scaffolding.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/tables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/theme.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/thumbnails.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/tooltip.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/type.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/utilities.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/less/wells.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/bootstrap/package.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lineitem.js" afterPath="$PROJECT_DIR$/src/lineitem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/renderer.js" afterPath="$PROJECT_DIR$/src/renderer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -184,26 +63,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="-84">
+              <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renderer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="renderer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
+            <state relative-caret-position="346">
+              <caret line="245" column="42" lean-forward="false" selection-start-line="245" selection-start-column="42" selection-end-line="245" selection-end-column="42" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
-                <element signature="e#2516#3963#0" expanded="false" />
-                <element signature="e#4014#5913#0" expanded="false" />
-                <element signature="e#5958#6447#0" expanded="false" />
+                <element signature="e#152#748#0" expanded="false" />
+                <element signature="e#806#1587#0" expanded="false" />
+                <element signature="e#1627#1675#0" expanded="false" />
+                <element signature="e#1680#1699#0" expanded="false" />
+                <element signature="e#1910#2006#0" expanded="false" />
+                <element signature="e#2542#4061#0" expanded="false" />
+                <element signature="e#4112#6033#0" expanded="false" />
+                <element signature="e#5172#5257#0" expanded="false" />
+                <element signature="e#6078#6567#0" expanded="false" />
+                <element signature="e#6511#6541#0" expanded="false" />
+                <element signature="e#6812#7652#0" expanded="false" />
+                <element signature="e#6862#6963#0" expanded="false" />
+                <element signature="e#7145#7236#0" expanded="false" />
+                <element signature="e#7408#7509#0" expanded="false" />
+                <element signature="e#7712#8430#0" expanded="false" />
+                <element signature="e#8049#8090#0" expanded="false" />
+                <element signature="e#8096#8424#0" expanded="false" />
+                <element signature="e#8464#8678#0" expanded="false" />
+                <element signature="e#8490#8672#0" expanded="false" />
+                <element signature="e#8718#9168#0" expanded="false" />
+                <element signature="e#8784#8834#0" expanded="false" />
+                <element signature="e#9206#9490#0" expanded="false" />
+                <element signature="e#9232#9484#0" expanded="false" />
+                <element signature="e#9524#9593#0" expanded="false" />
+                <element signature="e#9633#10187#0" expanded="false" />
+                <element signature="e#9641#10181#0" expanded="false" />
+                <element signature="e#9720#9930#0" expanded="false" />
+                <element signature="e#9797#9862#0" expanded="false" />
+                <element signature="e#9868#9918#0" expanded="false" />
+                <element signature="e#10006#10059#0" expanded="false" />
+                <element signature="e#10626#10656#0" expanded="false" />
+                <element signature="e#10820#10954#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -266,8 +174,8 @@
         <option value="$PROJECT_DIR$/src/lineitem.js" />
         <option value="$PROJECT_DIR$/webapp.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/renderer.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/src/renderer.js" />
       </list>
     </option>
   </component>
@@ -338,6 +246,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lineItemCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lineItemCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -451,12 +377,12 @@
       <option name="presentableId" value="Default" />
       <updated>1480858920281</updated>
       <workItem from="1480858921717" duration="29266000" />
-      <workItem from="1481021167746" duration="5353000" />
+      <workItem from="1481021167746" duration="6664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34619000" />
+    <option name="totallyTimeSpent" value="35930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -466,9 +392,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22860493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22860493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -531,9 +457,38 @@
           <caret line="193" column="30" lean-forward="false" selection-start-line="193" selection-start-column="30" selection-end-line="193" selection-end-column="30" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
-            <element signature="e#2516#3963#0" expanded="false" />
-            <element signature="e#4014#5913#0" expanded="false" />
-            <element signature="e#5958#6447#0" expanded="false" />
+            <element signature="e#152#748#0" expanded="false" />
+            <element signature="e#806#1587#0" expanded="false" />
+            <element signature="e#1627#1675#0" expanded="false" />
+            <element signature="e#1680#1699#0" expanded="false" />
+            <element signature="e#1910#2006#0" expanded="false" />
+            <element signature="e#2542#4061#0" expanded="false" />
+            <element signature="e#4112#6033#0" expanded="false" />
+            <element signature="e#5172#5257#0" expanded="false" />
+            <element signature="e#6078#6567#0" expanded="false" />
+            <element signature="e#6511#6541#0" expanded="false" />
+            <element signature="e#6812#7652#0" expanded="false" />
+            <element signature="e#6862#6963#0" expanded="false" />
+            <element signature="e#7145#7236#0" expanded="false" />
+            <element signature="e#7408#7509#0" expanded="false" />
+            <element signature="e#7712#8430#0" expanded="false" />
+            <element signature="e#8049#8090#0" expanded="false" />
+            <element signature="e#8096#8424#0" expanded="false" />
+            <element signature="e#8464#8678#0" expanded="false" />
+            <element signature="e#8490#8672#0" expanded="false" />
+            <element signature="e#8718#9168#0" expanded="false" />
+            <element signature="e#8784#8834#0" expanded="false" />
+            <element signature="e#9206#9490#0" expanded="false" />
+            <element signature="e#9232#9484#0" expanded="false" />
+            <element signature="e#9524#9593#0" expanded="false" />
+            <element signature="e#9633#10187#0" expanded="false" />
+            <element signature="e#9641#10181#0" expanded="false" />
+            <element signature="e#9720#9930#0" expanded="false" />
+            <element signature="e#9797#9862#0" expanded="false" />
+            <element signature="e#9868#9918#0" expanded="false" />
+            <element signature="e#10006#10059#0" expanded="false" />
+            <element signature="e#10626#10656#0" expanded="false" />
+            <element signature="e#10820#10954#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -593,19 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-            <element signature="e#2516#3963#0" expanded="false" />
-            <element signature="e#4014#5913#0" expanded="false" />
-            <element signature="e#5958#6447#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -624,9 +566,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="-84">
+          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="245" column="42" lean-forward="false" selection-start-line="245" selection-start-column="42" selection-end-line="245" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#152#748#0" expanded="false" />
+            <element signature="e#806#1587#0" expanded="false" />
+            <element signature="e#1627#1675#0" expanded="false" />
+            <element signature="e#1680#1699#0" expanded="false" />
+            <element signature="e#1910#2006#0" expanded="false" />
+            <element signature="e#2542#4061#0" expanded="false" />
+            <element signature="e#4112#6033#0" expanded="false" />
+            <element signature="e#5172#5257#0" expanded="false" />
+            <element signature="e#6078#6567#0" expanded="false" />
+            <element signature="e#6511#6541#0" expanded="false" />
+            <element signature="e#6812#7652#0" expanded="false" />
+            <element signature="e#6862#6963#0" expanded="false" />
+            <element signature="e#7145#7236#0" expanded="false" />
+            <element signature="e#7408#7509#0" expanded="false" />
+            <element signature="e#7712#8430#0" expanded="false" />
+            <element signature="e#8049#8090#0" expanded="false" />
+            <element signature="e#8096#8424#0" expanded="false" />
+            <element signature="e#8464#8678#0" expanded="false" />
+            <element signature="e#8490#8672#0" expanded="false" />
+            <element signature="e#8718#9168#0" expanded="false" />
+            <element signature="e#8784#8834#0" expanded="false" />
+            <element signature="e#9206#9490#0" expanded="false" />
+            <element signature="e#9232#9484#0" expanded="false" />
+            <element signature="e#9524#9593#0" expanded="false" />
+            <element signature="e#9633#10187#0" expanded="false" />
+            <element signature="e#9641#10181#0" expanded="false" />
+            <element signature="e#9720#9930#0" expanded="false" />
+            <element signature="e#9797#9862#0" expanded="false" />
+            <element signature="e#9868#9918#0" expanded="false" />
+            <element signature="e#10006#10059#0" expanded="false" />
+            <element signature="e#10626#10656#0" expanded="false" />
+            <element signature="e#10820#10954#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
