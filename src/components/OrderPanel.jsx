@@ -5,6 +5,8 @@ import {Col} from 'react-bootstrap';
 import {Panel} from 'react-bootstrap';
 import CurrencyBox from './CurrencyBox'
 
+// props:
+//  order: the order to display
 class OrderPanel extends Component{
   constructor(props){
     super(props);
@@ -32,32 +34,32 @@ class OrderPanel extends Component{
   render(){
     return(
       <Panel header="Order Totals" bsStyle={this.props.bsStyle}>
-        <Grid>
+        <Grid fluid> 
           <Row>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Subtotal"
                            label="Order Subtotal:"
-                           value="123"
+                           value={this.props.order.subtotal}
                            placeholder="Subtotal"
                            onChange={this.handleSubtotalChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Shipping"
                            label="Order Shipping:"
-                           value="123"
+                           value={this.props.order.shipping}
                            placeholder="Shipping"
                            onChange={this.handleShippingChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Tax"
                            label="Order Tax:"
-                           value="123"
+                           value={this.props.order.tax}
                            placeholder="Tax" onChange={this.handleTaxChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Total"
                            label="Order Total:"
-                           value="123"
+                           value={this.props.order.total()}
                            placeholder="Total" onChange={this.handleTotalChange}/>
             </Col>
           </Row>
