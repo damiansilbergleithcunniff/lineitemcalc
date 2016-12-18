@@ -1,7 +1,6 @@
 /**
  * Created by damian on 12/4/16.
  */
-define(function() {
 
   var roundCurrency = function(val) {
     var tmp = val * 100;
@@ -86,7 +85,7 @@ define(function() {
       shipping: shipping,
       tax: tax,
       total: function(){ return this.subtotal + this.shipping + this.tax },
-      quantity: function() { 
+      quantity: function() {
         var itemCount = 0;
         lineItems.forEach(function(lineItem) { itemCount += lineItem.quantity; });
         return itemCount;
@@ -127,12 +126,5 @@ define(function() {
   //   module.exports.order = order;
   // }
 
-  //AMD
-  return {
-    cost: cost,
-    item: item,
-    lineItem: lineItem,
-    order: order
-  };
+  export { cost, item, lineItem, order}
 
-});
