@@ -3,6 +3,7 @@ import {FormGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
 import {ControlLabel} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
+import accounting from 'accounting';
 
 class CurrencyBox extends Component{
   constructor(props){
@@ -17,7 +18,7 @@ class CurrencyBox extends Component{
           <InputGroup.Addon>$</InputGroup.Addon>
           <FormControl type="text"
                        placeholder={this.props.placeholder}
-                       value={this.props.value}
+                       value={accounting.toFixed(this.props.value,2)}
                        onChange={this.props.onChange} />
         </InputGroup>
       </FormGroup>
