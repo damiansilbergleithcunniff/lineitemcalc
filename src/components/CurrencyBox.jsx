@@ -5,21 +5,39 @@ import {ControlLabel} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import accounting from 'accounting';
 
+
+// props:
+//    controlId
+//    label (optional)
+//    placeholder
+//    value
+//    onChange
 class CurrencyBox extends Component{
   constructor(props){
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e){
+    if (this.props.onChange){
+      this.props.onChange(e);
+    }
   }
 
   render(){
     return(
       <FormGroup controlId={this.props.controlId}>
-        <ControlLabel>{this.props.label}</ControlLabel>
+        {this.props.label ?
+          <ControlLabel>{this.props.label}</ControlLabel>
+          : ''
+        }
         <InputGroup>
           <InputGroup.Addon>$</InputGroup.Addon>
           <FormControl type="text"
                        placeholder={this.props.placeholder}
                        value={accounting.toFixed(this.props.value,2)}
-                       onChange={this.props.onChange} />
+                       onChange={this.handleChange} />
         </InputGroup>
       </FormGroup>
     );

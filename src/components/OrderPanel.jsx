@@ -15,16 +15,16 @@ class OrderPanel extends Component{
     this.handleTotalChange = this.handleTotalChange.bind(this);
   }
 
-  handleSubtotalChange(){
+  handleSubtotalChange(e){
 
   }
-  handleShippingChange(){
+  handleShippingChange(e){
 
   }
-  handleTaxChange(){
+  handleTaxChange(e){
 
   }
-  handleTotalChange(){
+  handleTotalChange(e){
 
   }
 
