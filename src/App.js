@@ -17,6 +17,7 @@ class App extends Component {
     this.order = this.makeOrder();
 
     this.handleLineItemUpdate = this.handleLineItemUpdate.bind(this);
+    this.handleAddLineItem = this.handleAddLineItem.bind(this);
   }
 
   handleLineItemUpdate(ASIN, newValues){
@@ -28,6 +29,10 @@ class App extends Component {
     itemToUpdate.ASIN = newValues.ASIN;
     itemToUpdate.quantity = newValues.quantity;
     itemToUpdate.item.cost.price = newValues.price / newValues.quantity;
+  }
+
+  handleAddLineItem(){
+    console.log('adding line item');
   }
 
   makeOrder(){
@@ -59,7 +64,7 @@ class App extends Component {
     return (
       <div className="container">
         <OrderPanel bsStyle="primary" order={this.order}/>
-        <OrderLineItemPanel lineItems={this.order.lineItems} onLineItemUpdate={this.handleLineItemUpdate} />
+        <OrderLineItemPanel onAddLineItem={this.handleAddLineItem} lineItems={this.order.lineItems} onLineItemUpdate={this.handleLineItemUpdate} />
       </div>
     );
   }
