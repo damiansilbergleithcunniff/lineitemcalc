@@ -2,12 +2,45 @@ import React, { Component } from 'react';
 import LineItemRowDisplay from './LineItemRowDisplay'
 import LineItemRowEdit from './LineItemRowEdit'
 
+// props:
+//  lineItems: an array of line items
+//  onLineItemUpdate: function(ASIN, newValues)
 class LineItemTable extends Component {
   constructor(props){
     super(props);
+    this.state = {editing: -1};
+
+    this.handleDisplayRowEditClick = this.handleDisplayRowEditClick.bind(this);
+    this.handleEditRowCancel = this.handleEditRowCancel.bind(this);
+    this.handleEditRowCommit = this.handleEditRowCommit.bind(this);
   }
 
-  render(){
+  handleDisplayRowEditClick(editIndex){
+    this.setState({editing: editIndex});
+  }
+
+  handleEditRowCancel(){
+    this.setState({editing: -1});
+  }
+
+  handleEditRowCommit(ASIN, newValue){
+    this.props.onLineItemUpdate(ASIN, newValue);
+    this.setState({editing: -1});
+  }
+
+  renderLineItems(){
+    return this.props.lineItems.map((lineItem, n) => {
+      if (this.state.editing === n) {
+        return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
+                                onCancelClick={this.handleEditRowCancel} onCommitClick={this.handleEditRowCommit}/>
+      } else {
+        return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
+                                   onEditClick={this.handleDisplayRowEditClick} />
+      }
+    });
+  }
+
+  render() {
     return(
       <table className="table table-condensed">
         <thead>
@@ -24,12 +57,7 @@ class LineItemTable extends Component {
         </tr>
         </thead>
         <tbody>
-        <LineItemRowDisplay index="1" name="first" id="1234"
-                            cost="100" tax="5" shipping="10"
-                            quantity="2"/>
-        <LineItemRowEdit index="2" name="Second" id="1234"
-                         cost="100" tax="5" shipping="10"
-                         quantity="2"/>
+          {this.renderLineItems()}
         </tbody>
       </table>
     )

@@ -5,12 +5,7 @@ import accounting from 'accounting';
 
 // props:
 //  index
-//  name
-//  id
-//  cost
-//  tax
-//  shipping
-//  quantity
+//  lineItem
 class LineItemRowDisplay extends Component {
   constructor(props){
     super(props);
@@ -21,6 +16,9 @@ class LineItemRowDisplay extends Component {
 
   handleEditClick(e){
     console.log('edit button pressed');
+    if (this.props.onEditClick){
+      this.props.onEditClick(this.props.index);
+    }
   }
 
   handleRemoveClick(e){
@@ -29,15 +27,17 @@ class LineItemRowDisplay extends Component {
 
 
   render(){
+    const index = this.props.index;
+    const lineItem = this.props.lineItem;
     return(
        <tr>
-          <td>{this.props.index}</td>
-          <td>{this.props.name}</td>
-          <td>{this.props.id}</td>
-          <td>{accounting.formatMoney(this.props.cost)}</td>
-          <td>{accounting.formatMoney(this.props.tax)}</td>
-          <td>{accounting.formatMoney(this.props.shipping)}</td>
-          <td>{this.props.quantity}</td>
+          <td>{index}</td>
+          <td>{lineItem.description}</td>
+          <td>{lineItem.ASIN}</td>
+          <td>{accounting.formatMoney(lineItem.cost.price())}</td>
+          <td>{accounting.formatMoney(lineItem.cost.tax())}</td>
+          <td>{accounting.formatMoney(lineItem.cost.shipping())}</td>
+          <td>{lineItem.quantity}</td>
           <td><Button onClick={this.handleEditClick}><Glyphicon glyph="edit"/></Button></td>
           <td><Button onClick={this.handleRemoveClick} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
        </tr>

@@ -10,7 +10,7 @@ class OrderLineItemPanel extends Component{
   render(){
     return(
       <Panel bsStyle="default" header="Order Line Items">
-        <LineItemTable />
+        <LineItemTable lineItems={this.props.lineItems} onLineItemUpdate={this.props.onLineItemUpdate}/>
       </Panel>
     );
   }

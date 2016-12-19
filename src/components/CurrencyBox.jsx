@@ -36,7 +36,7 @@ class CurrencyBox extends Component{
           <InputGroup.Addon>$</InputGroup.Addon>
           <FormControl type="text"
                        placeholder={this.props.placeholder}
-                       value={accounting.toFixed(this.props.value,2)}
+                       value={this.props.value}
                        onChange={this.handleChange} />
         </InputGroup>
       </FormGroup>
