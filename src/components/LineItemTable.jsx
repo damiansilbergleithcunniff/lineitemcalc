@@ -28,11 +28,13 @@ class LineItemTable extends Component {
     this.setState({editing: -1});
   }
 
+
   renderLineItems(){
     return this.props.lineItems.map((lineItem, n) => {
       if (this.state.editing === n) {
         return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                onCancelClick={this.handleEditRowCancel} onCommitClick={this.handleEditRowCommit}/>
+                                onCancelClick={this.handleEditRowCancel}
+                                onCommitClick={this.handleEditRowCommit}/>
       } else {
         return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
                                    onEditClick={this.handleDisplayRowEditClick} />

@@ -19,21 +19,35 @@ class LineItemRowEdit extends Component {
       quantity: this.props.lineItem.quantity,
     };
 
-    this.handleCancelClick = this.handleCancelClick.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleCommit = this.handleCommit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleIdChange = this.handleIdChange.bind(this);
     this.handleCostChange = this.handleCostChange.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  handleCancelClick(e){
-    console.log('cancel button clicked');
+  handleKeyPress(e){
+    switch(e.key){
+      case 'Enter':
+        this.handleCommit(null);
+        e.preventDefault();
+        break;
+      case 'Escape':
+        this.handleCancel(null);
+        e.preventDefault();
+        break;
+    }
+  }
+
+  handleCancel(e){
+    console.log('cancel edit');
     this.props.onCancelClick();
   }
 
   handleCommit(e){
-    console.log('commit button pressed');
+    console.log('commit edit');
     this.props.onCommitClick(this.props.lineItem.ASIN, {
       description: this.state.description,
       ASIN: this.state.ASIN,
@@ -66,9 +80,9 @@ class LineItemRowEdit extends Component {
     const price = this.state.price;
     const quantity= this.state.quantity;
     return(
-       <tr className="danger">
-          <td><Button bsStyle="danger" onClick={this.handleCancelClick}><Glyphicon glyph="arrow-left"/></Button></td>
-          <td><FormControl type="text" value={description} onChange={this.handleNameChange} /></td>
+       <tr className="danger" tabIndex={index} onKeyDown={this.handleKeyPress}>
+          <td><Button bsStyle="danger" onClick={this.handleCancel}><Glyphicon glyph="arrow-left"/></Button></td>
+          <td><FormControl type="text" value={description} onChange={this.handleNameChange} autoFocus/></td>
           <td><FormControl type="text" value={ASIN} onChange={this.handleIdChange} /></td>
           <td><CurrencyBox value={price} onChange={this.handleCostChange} /></td>
           <td></td>

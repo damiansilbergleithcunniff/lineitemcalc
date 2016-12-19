@@ -10,18 +10,36 @@ class LineItemRowDisplay extends Component {
   constructor(props){
     super(props);
 
-    this.handleEditClick = this.handleEditClick.bind(this);
-    this.handleRemoveClick = this.handleRemoveClick.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  handleEditClick(e){
+  handleKeyPress(e){
+    switch(e.key){
+      case 'Enter':
+        this.handleEdit(null);
+        e.preventDefault();
+        break;
+      case 'x':
+        if (e.ctrlKey || e.metaKey || e.altKey){
+          this.handleRemove(null);
+          e.preventDefault();
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleEdit(e){
     console.log('edit button pressed');
     if (this.props.onEditClick){
       this.props.onEditClick(this.props.index);
     }
   }
 
-  handleRemoveClick(e){
+  handleRemove(e){
     console.log('remove button pressed');
   }
 
@@ -30,7 +48,7 @@ class LineItemRowDisplay extends Component {
     const index = this.props.index;
     const lineItem = this.props.lineItem;
     return(
-       <tr>
+       <tr tabIndex={index} onKeyDown={this.handleKeyPress}>
           <td>{index}</td>
           <td>{lineItem.description}</td>
           <td>{lineItem.ASIN}</td>
@@ -38,8 +56,8 @@ class LineItemRowDisplay extends Component {
           <td>{accounting.formatMoney(lineItem.cost.tax())}</td>
           <td>{accounting.formatMoney(lineItem.cost.shipping())}</td>
           <td>{lineItem.quantity}</td>
-          <td><Button onClick={this.handleEditClick}><Glyphicon glyph="edit"/></Button></td>
-          <td><Button onClick={this.handleRemoveClick} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
+          <td><Button onClick={this.handleEdit}><Glyphicon glyph="edit"/></Button></td>
+          <td><Button onClick={this.handleRemove} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
        </tr>
       /*
 
