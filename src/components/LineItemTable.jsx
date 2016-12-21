@@ -8,7 +8,10 @@ import LineItemRowEdit from './LineItemRowEdit'
 class LineItemTable extends Component {
   constructor(props){
     super(props);
-    this.state = {editing: -1};
+    this.state = {
+      editing: -1
+    };
+
 
     this.handleDisplayRowEditClick = this.handleDisplayRowEditClick.bind(this);
     this.handleEditRowCancel = this.handleEditRowCancel.bind(this);
@@ -28,6 +31,18 @@ class LineItemTable extends Component {
     this.setState({editing: -1});
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log('LineItemTable');
+    // find the first item which doesn't have a valid ASIN
+    nextProps.lineItems.forEach((item, n) => {
+      if(!item.ASIN) {
+        // this is the one that we want to edit
+        this.setState({
+          editing: n,
+        });
+      }
+    });
+  }
 
   renderLineItems(){
     return this.props.lineItems.map((lineItem, n) => {

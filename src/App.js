@@ -14,14 +14,16 @@ import * as lineItemLib from './lib/lineitem'
 class App extends Component {
   constructor(props){
     super(props);
-    this.order = this.makeOrder();
+    this.state = {
+      order: this.makeOrder(),
+    };
 
     this.handleLineItemUpdate = this.handleLineItemUpdate.bind(this);
     this.handleAddLineItem = this.handleAddLineItem.bind(this);
   }
 
   handleLineItemUpdate(ASIN, newValues){
-    let itemToUpdate = this.order.lineItems.filter((lineItem) => {
+    let itemToUpdate = this.state.order.lineItems.filter((lineItem) => {
         return lineItem.ASIN === ASIN;
       }
     )[0];
@@ -32,10 +34,16 @@ class App extends Component {
   }
 
   handleAddLineItem(){
-    console.log('adding line item');
+    let order = this.state.order;
+    order.lineItems.push(lineItemLib.lineItem(lineItemLib.item('','',0),1));
+    this.setState({order: order});
   }
 
   makeOrder(){
+    var order = lineItemLib.order(this.makeLineItems(), 116.00, 5.99, 8.54);
+    return order;
+  }
+  makeLineItems(){
     var candle1 = lineItemLib.item('111625166', 'Roasted Chestnut & Cherries 3-Wick Candle', 8.5);
     var candle2 = lineItemLib.item('86718036','Midnight Blue Citrus 3-Wick Candle', 8.5);
     var candle3 = lineItemLib.item("111625186", "Frosty Air 3-Wick Candle", 8.5);
@@ -51,20 +59,18 @@ class App extends Component {
       lineItemLib.lineItem(candle5, 2),
       lineItemLib.lineItem(other, 1)];
 
-    var order = lineItemLib.order(lineItems, 116.00, 5.99, 8.54);
-    lineItems.forEach(function(lineItem){
-      console.log(lineItem.description + ': ' + lineItem.ASIN);
-      console.log(lineItem.item.cost.total())
-    });
-
-    return order;
+    return lineItems;
   }
 
   render() {
+    const lineItems = this.state.order.lineItems;
+    const order = this.state.order;
     return (
       <div className="container">
-        <OrderPanel bsStyle="primary" order={this.order}/>
-        <OrderLineItemPanel onAddLineItem={this.handleAddLineItem} lineItems={this.order.lineItems} onLineItemUpdate={this.handleLineItemUpdate} />
+        <OrderPanel bsStyle="primary" order={order}/>
+        <OrderLineItemPanel lineItems={lineItems}
+                            onLineItemUpdate={this.handleLineItemUpdate}
+                            onAddLineItem={this.handleAddLineItem} />
       </div>
     );
   }
