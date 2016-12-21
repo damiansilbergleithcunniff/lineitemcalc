@@ -4,9 +4,9 @@ import LineItemTable from './LineItemTable'
 import OrderLineItemHeader from './OrderLineItemHeader'
 
 class OrderLineItemPanel extends Component{
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   makeHeader(){
     return <OrderLineItemHeader onAddClick={this.props.onAddLineItem}/>

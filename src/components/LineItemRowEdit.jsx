@@ -3,7 +3,6 @@ import {Glyphicon} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import {FormControl} from 'react-bootstrap'
 import CurrencyBox from './CurrencyBox'
-import accounting from 'accounting';
 
 // props:
 //  index
@@ -37,6 +36,8 @@ class LineItemRowEdit extends Component {
       case 'Escape':
         this.handleCancel(null);
         e.preventDefault();
+        break;
+      default:
         break;
     }
   }
