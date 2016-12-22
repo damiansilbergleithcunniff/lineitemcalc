@@ -20,8 +20,29 @@ class App extends Component {
 
     this.handleLineItemUpdate = this.handleLineItemUpdate.bind(this);
     this.handleLineItemAdd = this.handleLineItemAdd.bind(this);
+    this.handleLineItemEdit = this.handleLineItemEdit.bind(this);
+    this.handleLineItemEditCancel = this.handleLineItemEditCancel.bind(this);
     this.handleLineItemRemove = this.handleLineItemRemove.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+
+  handleKeyPress(e){
+    switch(e.key){
+      // case 'Enter':
+      //   this.handleEdit(null);
+      //   e.preventDefault();
+      //   break;
+      case 'a':
+        if (e.ctrlKey || e.metaKey || e.altKey){
+          this.handleLineItemAdd();
+          e.preventDefault();
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
 
   handleLineItemUpdate(lineItem, newValues){
     let order = this.state.order;
@@ -33,13 +54,33 @@ class App extends Component {
     itemToUpdate.ASIN = newValues.ASIN;
     itemToUpdate.quantity = newValues.quantity;
     itemToUpdate.item.cost.price = newValues.price / newValues.quantity;
-    this.setState({order: order});
+    this.setState({
+      order: order,
+      editingLineItem: false
+    });
+  }
+  handleLineItemEdit(lineItem){
+    this.setState({
+      editingLineItem: true
+    });
+  }
+
+  handleLineItemEditCancel(){
+    console.log('handleLineItemEditCancel');
+    this.setState({
+      editingLineItem: false
+    });
   }
 
   handleLineItemAdd(){
-    let order = this.state.order;
-    order.lineItems.push(lineItemLib.lineItem(lineItemLib.item('','',0),1));
-    this.setState({order: order});
+    if(!this.state.editingLineItem){
+      let order = this.state.order;
+      order.lineItems.push(lineItemLib.lineItem(lineItemLib.item('','',0),1));
+      this.setState({
+        order: order,
+        editingLineItem: true
+      });
+    }
   }
 
   handleLineItemRemove(lineItem){
@@ -53,7 +94,9 @@ class App extends Component {
         return item;
       }
     });
-    this.setState({order: order});
+    this.setState({
+      order: order
+    });
   }
 
   makeOrder(){
@@ -83,12 +126,15 @@ class App extends Component {
     const lineItems = this.state.order.lineItems;
     const order = this.state.order;
     return (
-      <div className="container">
+      <div className="container" tabIndex="0" onKeyUp={this.handleKeyPress}>
         <OrderPanel bsStyle="primary" order={order}/>
         <OrderLineItemPanel lineItems={lineItems}
+                            editingLineItem={this.state.editingLineItem}
                             onLineItemUpdate={this.handleLineItemUpdate}
                             onLineItemAdd={this.handleLineItemAdd}
-                            onLineItemRemove={this.handleLineItemRemove} />
+                            onLineItemRemove={this.handleLineItemRemove}
+                            onLineItemEdit={this.handleLineItemEdit}
+                            onLineItemEditCancel={this.handleLineItemEditCancel} />
       </div>
     );
   }

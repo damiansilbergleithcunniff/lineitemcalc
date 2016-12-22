@@ -10,7 +10,7 @@ class OrderLineItemHeader extends Component{
       <Grid fluid>
         <Row>
           <Col md={10}>Order Line Items</Col>
-          <Col md={2}><Button bsStyle="success" bsSize="xsmall" onClick={this.props.onAddClick}>Add Line Item</Button></Col>
+          <Col md={2}><Button bsStyle="success" bsSize="xsmall" disabled={this.props.buttonDisabled} onClick={this.props.onAddClick}>Add Line Item</Button></Col>
         </Row>
       </Grid>
     );

@@ -20,10 +20,13 @@ class LineItemTable extends Component {
   }
 
   handleDisplayRowEditClick(editIndex){
+    this.props.onLineItemEdit(this.props.lineItems[editIndex]);
     this.setState({editing: editIndex});
   }
 
   handleEditRowCancel(){
+    console.log('handleEditRowCancel');
+    this.props.onLineItemEditCancel();
     this.setState({editing: -1});
   }
 
@@ -39,6 +42,7 @@ class LineItemTable extends Component {
 
   handleRemoveRow(lineItem){
     this.props.onLineItemRemove(lineItem);
+    this.props.onLineItemEditCancel();
     this.setState({editing: -1});
   }
 

@@ -9,7 +9,7 @@ class OrderLineItemPanel extends Component{
   // }
 
   makeHeader(){
-    return <OrderLineItemHeader onAddClick={this.props.onLineItemAdd}/>
+    return <OrderLineItemHeader onAddClick={this.props.onLineItemAdd} buttonDisabled={this.props.editingLineItem} />
   }
 
   render(){
@@ -17,7 +17,9 @@ class OrderLineItemPanel extends Component{
       <Panel bsStyle="default" header={this.makeHeader()}>
         <LineItemTable lineItems={this.props.lineItems}
                        onLineItemUpdate={this.props.onLineItemUpdate}
-                       onLineItemRemove={this.props.onLineItemRemove} />
+                       onLineItemRemove={this.props.onLineItemRemove}
+                       onLineItemEdit={this.props.onLineItemEdit}
+                       onLineItemEditCancel={this.props.onLineItemEditCancel} />
       </Panel>
     );
   }
