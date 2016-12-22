@@ -34,7 +34,7 @@ class LineItemRowEdit extends Component {
         e.preventDefault();
         break;
       case 'Escape':
-        this.handleCancel(null);
+        this.handleCancel();
         e.preventDefault();
         break;
       default:
@@ -42,14 +42,14 @@ class LineItemRowEdit extends Component {
     }
   }
 
-  handleCancel(e){
+  handleCancel(){
     console.log('cancel edit');
-    this.props.onCancelClick();
+    this.props.onCancelClick(this.props.lineItem);
   }
 
   handleCommit(e){
     console.log('commit edit');
-    this.props.onCommitClick(this.props.lineItem.ASIN, {
+    this.props.onCommitClick(this.props.lineItem, {
       description: this.state.description,
       ASIN: this.state.ASIN,
       price: this.state.price,
@@ -80,11 +80,14 @@ class LineItemRowEdit extends Component {
     const ASIN = this.state.ASIN;
     const price = this.state.price;
     const quantity= this.state.quantity;
+
     return(
        <tr className="danger" tabIndex={index} onKeyDown={this.handleKeyPress}>
           <td><Button bsStyle="danger" onClick={this.handleCancel}><Glyphicon glyph="arrow-left"/></Button></td>
           <td><FormControl type="text" value={description} onChange={this.handleNameChange} autoFocus/></td>
-          <td><FormControl type="text" value={ASIN} onChange={this.handleIdChange} /></td>
+          <td>
+            <FormControl type="text" value={ASIN} onChange={this.handleIdChange} />
+          </td>
           <td><CurrencyBox value={price} onChange={this.handleCostChange} /></td>
           <td></td>
           <td></td>

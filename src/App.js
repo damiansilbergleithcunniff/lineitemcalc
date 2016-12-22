@@ -19,23 +19,40 @@ class App extends Component {
     };
 
     this.handleLineItemUpdate = this.handleLineItemUpdate.bind(this);
-    this.handleAddLineItem = this.handleAddLineItem.bind(this);
+    this.handleLineItemAdd = this.handleLineItemAdd.bind(this);
+    this.handleLineItemRemove = this.handleLineItemRemove.bind(this);
   }
 
-  handleLineItemUpdate(ASIN, newValues){
-    let itemToUpdate = this.state.order.lineItems.filter((lineItem) => {
-        return lineItem.ASIN === ASIN;
+  handleLineItemUpdate(lineItem, newValues){
+    let order = this.state.order;
+    let itemToUpdate = order.lineItems.filter((l) => {
+        return l === lineItem;
       }
     )[0];
     itemToUpdate.description = newValues.description;
     itemToUpdate.ASIN = newValues.ASIN;
     itemToUpdate.quantity = newValues.quantity;
     itemToUpdate.item.cost.price = newValues.price / newValues.quantity;
+    this.setState({order: order});
   }
 
-  handleAddLineItem(){
+  handleLineItemAdd(){
     let order = this.state.order;
     order.lineItems.push(lineItemLib.lineItem(lineItemLib.item('','',0),1));
+    this.setState({order: order});
+  }
+
+  handleLineItemRemove(lineItem){
+    let order = this.state.order;
+    console.log('handleLineItemRemove');
+    console.log(lineItem);
+    const toRemove = order.lineItems.forEach((item, n) => {
+      if(item === lineItem){
+        console.log('Remove Row: ' + n + ' with ID: ' + item.ASIN);
+        order.lineItems.splice(n, 1);
+        return item;
+      }
+    });
     this.setState({order: order});
   }
 
@@ -70,7 +87,8 @@ class App extends Component {
         <OrderPanel bsStyle="primary" order={order}/>
         <OrderLineItemPanel lineItems={lineItems}
                             onLineItemUpdate={this.handleLineItemUpdate}
-                            onAddLineItem={this.handleAddLineItem} />
+                            onLineItemAdd={this.handleLineItemAdd}
+                            onLineItemRemove={this.handleLineItemRemove} />
       </div>
     );
   }

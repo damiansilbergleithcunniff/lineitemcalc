@@ -16,6 +16,7 @@ class LineItemTable extends Component {
     this.handleDisplayRowEditClick = this.handleDisplayRowEditClick.bind(this);
     this.handleEditRowCancel = this.handleEditRowCancel.bind(this);
     this.handleEditRowCommit = this.handleEditRowCommit.bind(this);
+    this.handleRemoveRow = this.handleRemoveRow.bind(this);
   }
 
   handleDisplayRowEditClick(editIndex){
@@ -26,8 +27,18 @@ class LineItemTable extends Component {
     this.setState({editing: -1});
   }
 
-  handleEditRowCommit(ASIN, newValue){
-    this.props.onLineItemUpdate(ASIN, newValue);
+  handleEditRowCommit(lineItem, newValue){
+    console.log(lineItem);
+    if (!newValue.ASIN){
+      alert("Cannot commit with no ASIN");
+    } else {
+      this.props.onLineItemUpdate(lineItem, newValue);
+      this.setState({editing: -1});
+    }
+  }
+
+  handleRemoveRow(lineItem){
+    this.props.onLineItemRemove(lineItem);
     this.setState({editing: -1});
   }
 
@@ -47,12 +58,21 @@ class LineItemTable extends Component {
   renderLineItems(){
     return this.props.lineItems.map((lineItem, n) => {
       if (this.state.editing === n) {
-        return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                onCancelClick={this.handleEditRowCancel}
-                                onCommitClick={this.handleEditRowCommit}/>
+        // if this is a new item
+        if (!lineItem.ASIN) {
+          return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
+                                  onCancelClick={this.handleRemoveRow}
+                                  onCommitClick={this.handleEditRowCommit}/>
+        } else {
+          // normal edit row of an existing item
+          return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
+                                  onCancelClick={this.handleEditRowCancel}
+                                  onCommitClick={this.handleEditRowCommit}/>
+        }
       } else {
         return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                   onEditClick={this.handleDisplayRowEditClick} />
+                                   onEditClick={this.handleDisplayRowEditClick}
+                                   onRemoveClick={this.handleRemoveRow} />
       }
     });
   }

@@ -41,6 +41,7 @@ class LineItemRowDisplay extends Component {
 
   handleRemove(e){
     console.log('remove button pressed');
+    this.props.onRemoveClick(this.props.lineItem);
   }
 
 
