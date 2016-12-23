@@ -65,9 +65,9 @@ class LineItemRowEdit extends Component {
     console.log('id changed');
     this.setState({ASIN: e.target.value})
   }
-  handleCostChange(e){
+  handleCostChange(newValue){
     console.log('cost changed');
-    this.setState({price: e.target.value})
+    this.setState({price: newValue})
   }
   handleQuantityChange(e){
     console.log('quantity changed');

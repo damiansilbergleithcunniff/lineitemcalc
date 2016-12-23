@@ -18,12 +18,20 @@ class App extends Component {
       order: this.makeOrder(),
     };
 
+    this.handleOrderSubtotalChange = this.handleOrderSubtotalChange.bind(this);
+    this.handleOrderShippingChange = this.handleOrderShippingChange.bind(this);
+    this.handleOrderTaxChange = this.handleOrderTaxChange.bind(this);
+
     this.handleLineItemUpdate = this.handleLineItemUpdate.bind(this);
     this.handleLineItemAdd = this.handleLineItemAdd.bind(this);
     this.handleLineItemEdit = this.handleLineItemEdit.bind(this);
     this.handleLineItemEditCancel = this.handleLineItemEditCancel.bind(this);
     this.handleLineItemRemove = this.handleLineItemRemove.bind(this);
+
     this.handleKeyPress = this.handleKeyPress.bind(this);
+
+
+
   }
 
   handleKeyPress(e){
@@ -43,6 +51,23 @@ class App extends Component {
     }
   }
 
+  handleOrderSubtotalChange(newValue){
+    console.log('handleOrderSubtotalChange');
+    console.log(newValue);
+    let order = this.state.order;
+    order.subtotal = Number(newValue);
+    this.setState({order: order});
+  }
+  handleOrderShippingChange(newValue){
+    let order = this.state.order;
+    order.shipping = Number(newValue);
+    this.setState({order: order});
+  }
+  handleOrderTaxChange(newValue){
+    let order = this.state.order;
+    order.tax = Number(newValue);
+    this.setState({order: order});
+  }
 
   handleLineItemUpdate(lineItem, newValues){
     let order = this.state.order;
@@ -64,14 +89,12 @@ class App extends Component {
       editingLineItem: true
     });
   }
-
   handleLineItemEditCancel(){
     console.log('handleLineItemEditCancel');
     this.setState({
       editingLineItem: false
     });
   }
-
   handleLineItemAdd(){
     if(!this.state.editingLineItem){
       let order = this.state.order;
@@ -82,7 +105,6 @@ class App extends Component {
       });
     }
   }
-
   handleLineItemRemove(lineItem){
     let order = this.state.order;
     console.log('handleLineItemRemove');
@@ -127,7 +149,11 @@ class App extends Component {
     const order = this.state.order;
     return (
       <div className="container" tabIndex="0" onKeyUp={this.handleKeyPress}>
-        <OrderPanel bsStyle="primary" order={order}/>
+        <OrderPanel bsStyle="primary" order={order}
+                    onSubtotalChange={this.handleOrderSubtotalChange}
+                    onShippingChange={this.handleOrderShippingChange}
+                    onTaxChange={this.handleOrderTaxChange} />
+
         <OrderLineItemPanel lineItems={lineItems}
                             editingLineItem={this.state.editingLineItem}
                             onLineItemUpdate={this.handleLineItemUpdate}

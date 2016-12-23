@@ -18,16 +18,16 @@ class OrderPanel extends Component{
   }
 
   handleSubtotalChange(e){
-
+    console.log('subtotal change');
   }
   handleShippingChange(e){
-
+    console.log('shipping change');
   }
   handleTaxChange(e){
-
+    console.log('tax change');
   }
   handleTotalChange(e){
-
+    console.log('total change');
   }
 
 
@@ -41,20 +41,20 @@ class OrderPanel extends Component{
                            label="Order Subtotal:"
                            value={this.props.order.subtotal}
                            placeholder="Subtotal"
-                           onChange={this.handleSubtotalChange}/>
+                           onChange={this.props.onSubtotalChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Shipping"
                            label="Order Shipping:"
                            value={this.props.order.shipping}
                            placeholder="Shipping"
-                           onChange={this.handleShippingChange}/>
+                           onChange={this.props.onShippingChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Tax"
                            label="Order Tax:"
                            value={this.props.order.tax}
-                           placeholder="Tax" onChange={this.handleTaxChange}/>
+                           placeholder="Tax" onChange={this.props.onTaxChange}/>
             </Col>
             <Col lg={3} md={3}>
               <CurrencyBox controlId="Total"
