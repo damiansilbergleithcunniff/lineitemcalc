@@ -53,9 +53,9 @@ class LineItemRowDisplay extends Component {
           <td>{index}</td>
           <td>{lineItem.description}</td>
           <td>{lineItem.ASIN}</td>
-          <td>{accounting.formatMoney(lineItem.cost.price())}</td>
-          <td>{accounting.formatMoney(lineItem.cost.tax())}</td>
-          <td>{accounting.formatMoney(lineItem.cost.shipping())}</td>
+          <td>{accounting.formatMoney(lineItem.item.cost.price)}</td>
+          <td>{accounting.formatMoney(lineItem.item.cost.tax)}</td>
+          <td>{accounting.formatMoney(lineItem.item.cost.shipping)}</td>
           <td>{lineItem.quantity}</td>
           <td><Button onClick={this.handleEdit}><Glyphicon glyph="edit"/></Button></td>
           <td><Button onClick={this.handleRemove} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
