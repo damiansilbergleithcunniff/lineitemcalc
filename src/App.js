@@ -79,7 +79,7 @@ class App extends Component {
     itemToUpdate.description = newValues.description;
     itemToUpdate.ASIN = newValues.ASIN;
     itemToUpdate.quantity = newValues.quantity;
-    itemToUpdate.item.cost.price = newValues.price / newValues.quantity;
+    itemToUpdate.item.cost.price = newValues.price;
     this.setState({
       order: order,
       editingLineItem: false

@@ -12,17 +12,24 @@ class LineItemRowEdit extends Component {
     super(props);
 
     this.state = {
-      description: this.props.lineItem.description,
-      ASIN: this.props.lineItem.ASIN,
-      price: this.props.lineItem.cost.price(),
+      description: this.props.lineItem.item.description,
+      ASIN: this.props.lineItem.item.ASIN,
+      price: this.props.lineItem.item.cost.price,
       quantity: this.props.lineItem.quantity,
     };
+
+    // we keep a second price variable
+    //  this is done as a work around
+    //  it lets us capture price on change
+    //  so that if somebody hits 'enter'
+    this.price = this.state.price;
 
     this.handleCancel = this.handleCancel.bind(this);
     this.handleCommit = this.handleCommit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleIdChange = this.handleIdChange.bind(this);
+    this.handleASINChange = this.handleASINChange.bind(this);
     this.handleCostChange = this.handleCostChange.bind(this);
+    this.handleCostBlur = this.handleCostBlur.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
@@ -30,7 +37,7 @@ class LineItemRowEdit extends Component {
   handleKeyPress(e){
     switch(e.key){
       case 'Enter':
-        this.handleCommit(null);
+        this.handleCommit();
         e.preventDefault();
         break;
       case 'Escape':
@@ -47,31 +54,30 @@ class LineItemRowEdit extends Component {
     this.props.onCancelClick(this.props.lineItem);
   }
 
-  handleCommit(e){
+  handleCommit(){
     console.log('commit edit');
     this.props.onCommitClick(this.props.lineItem, {
       description: this.state.description,
       ASIN: this.state.ASIN,
-      price: this.state.price,
+      price: this.price,
       quantity: this.state.quantity,
     });
   }
 
   handleNameChange(e){
-    console.log('name changed');
-    this.setState({description: e.target.value})
+    this.setState({description: e.target.value});
   }
-  handleIdChange(e){
-    console.log('id changed');
-    this.setState({ASIN: e.target.value})
+  handleASINChange(e){
+    this.setState({ASIN: e.target.value});
   }
-  handleCostChange(newValue){
-    console.log('cost changed');
-    this.setState({price: newValue})
+  handleCostChange(e){
+    this.price = e.target.value;
+  }
+  handleCostBlur(e){
+    this.setState({price: e.target.value});
   }
   handleQuantityChange(e){
-    console.log('quantity changed');
-    this.setState({quantity: e.target.value})
+    this.setState({quantity: e.target.value});
   }
 
   render(){
@@ -85,10 +91,8 @@ class LineItemRowEdit extends Component {
        <tr className="danger" tabIndex={index} onKeyDown={this.handleKeyPress}>
           <td><Button bsStyle="danger" onClick={this.handleCancel}><Glyphicon glyph="arrow-left"/></Button></td>
           <td><FormControl type="text" value={description} onChange={this.handleNameChange} autoFocus/></td>
-          <td>
-            <FormControl type="text" value={ASIN} onChange={this.handleIdChange} />
-          </td>
-          <td><CurrencyBox value={price} onChange={this.handleCostChange} /></td>
+          <td><FormControl type="text" value={ASIN} onChange={this.handleASINChange} /></td>
+          <td><CurrencyBox value={price} onBlur={this.handleCostBlur} onChange={this.handleCostChange} /></td>
           <td></td>
           <td></td>
           <td><FormControl type="text" value={quantity} onChange={this.handleQuantityChange} /></td>
