@@ -3,35 +3,48 @@ import {Glyphicon} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import {FormControl} from 'react-bootstrap'
 import CurrencyBox from './CurrencyBox'
+import * as accounting from 'accounting'
 
+// React Component to edit a lineItem
 // props:
-//  index
-//  lineItem
+//  index: the index in the list of lineItems being displayed
+//  lineItem: the line item being edited
+//  Events:
+//    onCancel(lineItem):
+//      fired when the user exits editing without saving
+//      lineItem: the original, unedited, lineItem
+//    onCommit(lineItem, updateObj):
+//      fired when the user commits his changes
+//      lineItem: the original, unedited, lineItem
+//      updateObj:  an object with the edited fields.  Field names match the lineItem's fields
 class LineItemRowEdit extends Component {
   constructor(props){
     super(props);
 
+    // we need to track changes to the price as they happen
+    // but we don't want to apply formatting in the ui until
+    // the user is done typing
+    // to do this we keep the real price out of state
+    // and keep a formatted price in state.
+    this.price = this.props.lineItem.item.cost.price;
+
     this.state = {
       description: this.props.lineItem.item.description,
       ASIN: this.props.lineItem.item.ASIN,
-      price: this.props.lineItem.item.cost.price,
+      formattedPrice: accounting.toFixed(this.price, 2),
       quantity: this.props.lineItem.quantity,
     };
 
-    // we keep a second price variable
-    //  this is done as a work around
-    //  it lets us capture price on change
-    //  so that if somebody hits 'enter'
-    this.price = this.state.price;
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 
     this.handleCancel = this.handleCancel.bind(this);
     this.handleCommit = this.handleCommit.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
+
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleASINChange = this.handleASINChange.bind(this);
     this.handleCostChange = this.handleCostChange.bind(this);
     this.handleCostBlur = this.handleCostBlur.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleKeyPress(e){
@@ -50,13 +63,10 @@ class LineItemRowEdit extends Component {
   }
 
   handleCancel(){
-    console.log('cancel edit');
-    this.props.onCancelClick(this.props.lineItem);
+    this.props.onCancel(this.props.lineItem);
   }
-
   handleCommit(){
-    console.log('commit edit');
-    this.props.onCommitClick(this.props.lineItem, {
+    this.props.onCommit(this.props.lineItem, {
       description: this.state.description,
       ASIN: this.state.ASIN,
       price: this.price,
@@ -64,17 +74,25 @@ class LineItemRowEdit extends Component {
     });
   }
 
-  handleNameChange(e){
+  handleDescriptionChange(e){
     this.setState({description: e.target.value});
   }
   handleASINChange(e){
     this.setState({ASIN: e.target.value});
   }
   handleCostChange(e){
+    // every time somebody changes the price
+    // we update the real price
+    // This lets us know what the person was typing
+    //  even if they commit before leaving the textbox
+    // In addition, the currency box manages its own state
+    //  so it will re-render itself as the user types
     this.price = e.target.value;
   }
   handleCostBlur(e){
-    this.setState({price: e.target.value});
+    // If the user has updated the field, then moved to another
+    // we want to format the price for correct display
+    this.setState({formattedPrice: accounting.toFixed(this.price, 2)});
   }
   handleQuantityChange(e){
     this.setState({quantity: e.target.value});
@@ -84,13 +102,15 @@ class LineItemRowEdit extends Component {
     const index = this.props.index;
     const description = this.state.description;
     const ASIN = this.state.ASIN;
-    const price = this.state.price;
+    // for the price to display we use the formatted price
+    //  if the user is typing a new price the CurrencyBox will update itself
+    const price = this.state.formattedPrice;
     const quantity= this.state.quantity;
 
     return(
        <tr className="danger" tabIndex={index} onKeyDown={this.handleKeyPress}>
           <td><Button bsStyle="danger" onClick={this.handleCancel}><Glyphicon glyph="arrow-left"/></Button></td>
-          <td><FormControl type="text" value={description} onChange={this.handleNameChange} autoFocus/></td>
+          <td><FormControl type="text" value={description} onChange={this.handleDescriptionChange} autoFocus/></td>
           <td><FormControl type="text" value={ASIN} onChange={this.handleASINChange} /></td>
           <td><CurrencyBox value={price} onBlur={this.handleCostBlur} onChange={this.handleCostChange} /></td>
           <td></td>
@@ -99,20 +119,6 @@ class LineItemRowEdit extends Component {
           <td></td>
           <td><Button onClick={this.handleCommit} bsStyle="success"><Glyphicon glyph="ok-circle"/></Button></td>
        </tr>
-      /*
-
-       <tr class="danger">
-       <td><span><a class="btn btn-sm btn-danger glyphicon glyphicon-arrow-left"></a></span></td>
-       <td><span><input class="description focused form-control" type="text" value="Roasted Chestnut &amp; Cherries 3-Wick Candle"></span></td>
-       <td><span><input class="ASIN form-control" type="text" value="111625166"></span></td>
-       <td><span><input class="price form-control" type="text" value="8.50"></span></td>
-       <td><span></span></td>
-       <td><span></span></td>
-       <td><span><input class="quantity form-control" type="text" value="2"></span></td>
-       <td></td>
-       <td><span><a class="btn btn-sm btn-success glyphicon glyphicon-ok-circle"></a></span></td>
-       </tr>
-       */
     );
   }
 }

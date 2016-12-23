@@ -65,13 +65,13 @@ class LineItemTable extends Component {
         // if this is a new item
         if (!lineItem.ASIN) {
           return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                  onCancelClick={this.handleRemoveRow}
-                                  onCommitClick={this.handleEditRowCommit}/>
+                                  onCancel={this.handleRemoveRow}
+                                  onCommit={this.handleEditRowCommit}/>
         } else {
           // normal edit row of an existing item
           return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                  onCancelClick={this.handleEditRowCancel}
-                                  onCommitClick={this.handleEditRowCommit}/>
+                                  onCancel={this.handleEditRowCancel}
+                                  onCommit={this.handleEditRowCommit}/>
         }
       } else {
         return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
