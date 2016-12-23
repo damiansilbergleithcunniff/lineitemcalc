@@ -68,10 +68,8 @@
     // // verify that the order is properly priced
     // // and that all of our line items are included
     var lineItemPriceTotal = 0.00;
-    var quantity = 0;
     lineItems.forEach(function(lineItem) {
       lineItemPriceTotal += lineItem.cost.price();
-      quantity += lineItem.quantity;
     });
     if (lineItemPriceTotal !== subtotal){
       throw new Error('Line item price total (' + lineItemPriceTotal +

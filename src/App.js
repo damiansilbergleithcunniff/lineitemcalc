@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import OrderPanel from './components/OrderPanel'
 import OrderLineItemPanel from './components/OrderLineItemPanel'
@@ -107,11 +107,8 @@ class App extends Component {
   }
   handleLineItemRemove(lineItem){
     let order = this.state.order;
-    console.log('handleLineItemRemove');
-    console.log(lineItem);
-    const toRemove = order.lineItems.forEach((item, n) => {
+    order.lineItems.forEach((item, n) => {
       if(item === lineItem){
-        console.log('Remove Row: ' + n + ' with ID: ' + item.ASIN);
         order.lineItems.splice(n, 1);
         return item;
       }
