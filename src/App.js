@@ -51,19 +51,20 @@ class App extends Component {
     }
   }
 
-  handleOrderSubtotalChange(newValue){
-    console.log('handleOrderSubtotalChange');
-    console.log(newValue);
+  handleOrderSubtotalChange(e){
+    let newValue = e.target.value;
     let order = this.state.order;
     order.subtotal = Number(newValue);
     this.setState({order: order});
   }
-  handleOrderShippingChange(newValue){
+  handleOrderShippingChange(e){
+    let newValue = e.target.value;
     let order = this.state.order;
     order.shipping = Number(newValue);
     this.setState({order: order});
   }
-  handleOrderTaxChange(newValue){
+  handleOrderTaxChange(e){
+    let newValue = e.target.value;
     let order = this.state.order;
     order.tax = Number(newValue);
     this.setState({order: order});

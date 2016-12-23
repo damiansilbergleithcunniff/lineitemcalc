@@ -5,13 +5,17 @@ import {ControlLabel} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import * as accounting from 'accounting'
 
-
-// props:
-//    controlId
-//    label (optional)
-//    placeholder
-//    value
-//    onChange(newValue)
+//  React-Bootstrap component which renders a text input with a "$" decoration
+//    also automatically formats to 2 decimal places when focus is lost
+//  Events:
+//    onChange(e):  Raised when the value is updated.
+//    onBlur(e):    Raised when the input loses focus
+//  props:
+//    controlId: A unique ID to add to the Bootstrap FormGroup
+//    label: the Label to show with the textbox (optional)
+//    placeholder: the grey text to appear in the input
+//    value: the value of the textbox, will be used to update the value displayed
+//    readOnly: if truthy the input will be disabled
 class CurrencyBox extends Component{
   constructor(props){
     super(props);
@@ -19,24 +23,16 @@ class CurrencyBox extends Component{
     this.state = {value: accounting.toFixed(this.props.value,2)};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillReceiveProps(newProps){
-    if (this.props.value !== newProps.value){
       this.setState({value: accounting.toFixed(newProps.value,2)});
-    }
   }
 
-  // updates state internally but adds a typing delay to call props.onChange
   handleChange(e){
     this.setState({value: e.target.value});
-  }
-
-  handleBlur(e){
     if (this.props.onChange){
-      this.props.onChange(this.state.value)
+      this.props.onChange(e)
     }
   }
 
@@ -52,7 +48,9 @@ class CurrencyBox extends Component{
           <FormControl type="text"
                        placeholder={this.props.placeholder}
                        value={this.state.value}
-                       onChange={this.handleChange} onBlur={this.handleBlur} />
+                       disabled={this.props.readOnly}
+                       onBlur={this.props.onBlur}
+                       onChange={this.handleChange} />
         </InputGroup>
       </FormGroup>
     );
