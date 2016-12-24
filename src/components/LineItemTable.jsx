@@ -75,8 +75,8 @@ class LineItemTable extends Component {
         }
       } else {
         return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                   onEditClick={this.handleDisplayRowEditClick}
-                                   onRemoveClick={this.handleRemoveRow} />
+                                   onEditRequest={this.handleDisplayRowEditClick}
+                                   onRemoveRequest={this.handleRemoveRow} />
       }
     });
   }
