@@ -65,8 +65,8 @@ class LineItemRowDisplay extends Component {
          <td>{lineItem.description}</td>
          <td>{lineItem.ASIN}</td>
          <td>{price}</td>
-         <td>{tax}</td>
          <td>{shipping}</td>
+         <td>{tax}</td>
          <td>{quantity}</td>
          <td><Button onClick={this.handleEdit}><Glyphicon glyph="edit"/></Button></td>
          <td><Button onClick={this.handleRemove} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>

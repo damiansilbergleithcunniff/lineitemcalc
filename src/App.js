@@ -5,12 +5,7 @@ import OrderPanel from './components/OrderPanel'
 import OrderLineItemPanel from './components/OrderLineItemPanel'
 import * as lineItemLib from './lib/lineitem'
 
-(function(){
-  console.log('starting up');
-  console.log('building order');
-
-}());
-
+// React Application which renders an 'order' and its 'lineItems'
 class App extends Component {
   constructor(props){
     super(props);
@@ -61,12 +56,14 @@ class App extends Component {
     let newValue = e.target.value;
     let order = this.state.order;
     order.shipping = Number(newValue);
+    order.updateLineItems();
     this.setState({order: order});
   }
   handleOrderTaxChange(e){
     let newValue = e.target.value;
     let order = this.state.order;
     order.tax = Number(newValue);
+    order.updateLineItems();
     this.setState({order: order});
   }
 
