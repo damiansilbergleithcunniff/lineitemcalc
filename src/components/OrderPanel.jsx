@@ -5,32 +5,17 @@ import {Col} from 'react-bootstrap';
 import {Panel} from 'react-bootstrap';
 import CurrencyBox from './CurrencyBox'
 
+// React Component which displays the Order details using React Bootstrap
+// Events:
+//  onSubtotalChange(event): raised when the subtotal is changed.
+//    event: the React Synthetic Event raised by the onChange
+//  onShippingChange(event): raised when the shipping is changed.
+//    event: the React Synthetic Event raised by the onChange
+//  onTaxChange(event): raised when the tax is changed.
+//    event: the React Synthetic Event raised by the onChange
 // props:
 //  order: the order to display
 class OrderPanel extends Component{
-  constructor(props){
-    super(props);
-
-    this.handleShippingChange = this.handleShippingChange.bind(this);
-    this.handleSubtotalChange = this.handleSubtotalChange.bind(this);
-    this.handleTaxChange = this.handleTaxChange.bind(this);
-    this.handleTotalChange = this.handleTotalChange.bind(this);
-  }
-
-  handleSubtotalChange(e){
-    console.log('subtotal change');
-  }
-  handleShippingChange(e){
-    console.log('shipping change');
-  }
-  handleTaxChange(e){
-    console.log('tax change');
-  }
-  handleTotalChange(e){
-    console.log('total change');
-  }
-
-
   render(){
     return(
       <Panel header="Order Totals" bsStyle={this.props.bsStyle}>
