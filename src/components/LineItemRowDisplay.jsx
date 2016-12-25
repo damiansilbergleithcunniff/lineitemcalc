@@ -3,6 +3,7 @@ import {Glyphicon} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
 import accounting from 'accounting';
 
+// React Component to display a lineItem
 // Events:
 //  onEditRequest(index):
 //      Raised when a request is made to edit this row.

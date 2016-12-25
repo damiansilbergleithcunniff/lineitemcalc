@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import LineItemRowDisplay from './LineItemRowDisplay'
 import LineItemRowEdit from './LineItemRowEdit'
 
+// React Component to display a table of lineItems.  Manages state for which row is being edited.
+// Events:
+//  onLineItemUpdate(lineItem, newValues): fired when an update to a lineItem is made
+//    lineItem: the lineItem which is being updated
+//    newValues: an object that contains the updated values.  Property names match the lineItem's properties
+//  onLineItemRemove(lineItem): fired when a lineItem is to be removed from the order
+//    lineItem: the lineItem which should be removed
+//  onLineItemEdit(lineItem): fired when a lineItem is being edited
+//    lineItem: the lineItem which is to be edited
+//  onLineItemEditCancel(): fired when a cancel is called on a lineItem.  Used to notify parents of the state change.
 // props:
-//  lineItems: an array of line items
-//  onLineItemUpdate: function(ASIN, newValues)
+//  lineItems: an array of lineItems to render in the table
 class LineItemTable extends Component {
   constructor(props){
     super(props);
@@ -12,16 +21,24 @@ class LineItemTable extends Component {
       editing: -1
     };
 
+    this.handleDisplayRowEditRequest = this.handleDisplayRowEditRequest.bind(this);
 
-    this.handleDisplayRowEditClick = this.handleDisplayRowEditClick.bind(this);
+    this.handleRemoveRow = this.handleRemoveRow.bind(this);
+
     this.handleEditRowCancel = this.handleEditRowCancel.bind(this);
     this.handleEditRowCommit = this.handleEditRowCommit.bind(this);
-    this.handleRemoveRow = this.handleRemoveRow.bind(this);
+
   }
 
-  handleDisplayRowEditClick(editIndex){
+  handleDisplayRowEditRequest(editIndex){
     this.props.onLineItemEdit(this.props.lineItems[editIndex]);
     this.setState({editing: editIndex});
+  }
+
+  handleRemoveRow(lineItem){
+    this.props.onLineItemRemove(lineItem);
+    this.props.onLineItemEditCancel();
+    this.setState({editing: -1});
   }
 
   handleEditRowCancel(){
@@ -29,7 +46,6 @@ class LineItemTable extends Component {
     this.props.onLineItemEditCancel();
     this.setState({editing: -1});
   }
-
   handleEditRowCommit(lineItem, newValue){
     console.log(lineItem);
     if (!newValue.ASIN){
@@ -40,18 +56,14 @@ class LineItemTable extends Component {
     }
   }
 
-  handleRemoveRow(lineItem){
-    this.props.onLineItemRemove(lineItem);
-    this.props.onLineItemEditCancel();
-    this.setState({editing: -1});
-  }
 
   componentWillReceiveProps(nextProps){
-    console.log('LineItemTable');
-    // find the first item which doesn't have a valid ASIN
+    // Check to see if there is a lineItem which doesn't have an ASIN
+    //  if there is one, then we want to automatically set that row
+    //  in edit mode instead of display mode.
+    // This prevents adding a row and having it be empty
     nextProps.lineItems.forEach((item, n) => {
       if(!item.ASIN) {
-        // this is the one that we want to edit
         this.setState({
           editing: n,
         });
@@ -59,25 +71,31 @@ class LineItemTable extends Component {
     });
   }
 
+  renderEditNewRow(lineItem, n){
+    return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
+                            onCancel={this.handleRemoveRow}
+                            onCommit={this.handleEditRowCommit}/>
+  }
+  renderEditExistingRow(lineItem, n){
+    return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
+                            onCancel={this.handleEditRowCancel}
+                            onCommit={this.handleEditRowCommit}/>
+  }
+  renderDisplayRow(lineItem, n){
+    return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
+                               onEditRequest={this.handleDisplayRowEditRequest}
+                               onRemoveRequest={this.handleRemoveRow} />
+  }
   renderLineItems(){
     return this.props.lineItems.map((lineItem, n) => {
       if (this.state.editing === n) {
-        // if this is a new item
+        // editing, so decide if we render a new or an existing row
         if (!lineItem.ASIN) {
-          return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                  onCancel={this.handleRemoveRow}
-                                  onCommit={this.handleEditRowCommit}/>
-        } else {
-          // normal edit row of an existing item
-          return <LineItemRowEdit key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                  onCancel={this.handleEditRowCancel}
-                                  onCommit={this.handleEditRowCommit}/>
+          return this.renderEditNewRow(lineItem, n);
         }
-      } else {
-        return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
-                                   onEditRequest={this.handleDisplayRowEditClick}
-                                   onRemoveRequest={this.handleRemoveRow} />
+        return this.renderEditExistingRow(lineItem, n)
       }
+      return this.renderDisplayRow(lineItem, n);
     });
   }
 
