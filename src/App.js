@@ -50,6 +50,7 @@ class App extends Component {
     let newValue = e.target.value;
     let order = this.state.order;
     order.subtotal = Number(newValue);
+    order.updateLineItems();
     this.setState({order: order});
   }
   handleOrderShippingChange(e){
