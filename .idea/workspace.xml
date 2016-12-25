@@ -4,7 +4,8 @@
     <list default="true" id="12d083ca-6b05-4918-99f6-db602e78140c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx" afterPath="$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx" afterPath="$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx" afterPath="$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+            <state relative-caret-position="74">
+              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding>
                 <element signature="e#76#95#0" expanded="true" />
                 <element signature="n#!!block;n#handleKeyPress#0;n#App#0" expanded="false" />
@@ -46,7 +47,7 @@
       <file leaf-file-name="OrderPanel.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/OrderPanel.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
+            <state relative-caret-position="-336">
               <caret line="7" column="73" lean-forward="false" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
               <folding />
             </state>
@@ -56,8 +57,8 @@
       <file leaf-file-name="LineItemRowDisplay.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="389">
+              <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="43" />
               <folding>
                 <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowDisplay#0" expanded="false" />
                 <element signature="n#!!block;n#handleEdit#0;n#LineItemRowDisplay#0" expanded="false" />
@@ -67,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineItemRowEdit.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LineItemRowEdit.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LineItemRowEdit.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1743">
@@ -75,6 +76,38 @@
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowEdit#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderLineItemPanel.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lineitem.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/lineitem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-210">
+              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderLineItemHeader.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="33" column="71" lean-forward="false" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,6 +170,7 @@
       <find>handleNameChange</find>
       <find>handleDisplayRowEditClick</find>
       <find>props</find>
+      <find>props.lineItems</find>
     </findStrings>
     <replaceStrings>
       <replace>bootstrap</replace>
@@ -153,6 +187,7 @@
       <replace>onRemoveRequest</replace>
       <replace>handleDescriptionChange</replace>
       <replace>handleDisplayRowEditRequest</replace>
+      <replace>props.order.lineItems</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -177,15 +212,15 @@
         <option value="$PROJECT_DIR$/lib/CurrencyBox.jsx" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/LineItemRow.jsx" />
-        <option value="$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx" />
         <option value="$PROJECT_DIR$/src/lib/lineitem.js" />
         <option value="$PROJECT_DIR$/src/components/CurrencyBox.jsx" />
         <option value="$PROJECT_DIR$/src/components/LineItemRowEdit.jsx" />
-        <option value="$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx" />
         <option value="$PROJECT_DIR$/src/components/OrderPanel.jsx" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/LineItemTable.jsx" />
         <option value="$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx" />
+        <option value="$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx" />
       </list>
     </option>
   </component>
@@ -241,6 +276,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lineItemCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lineItemCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,12 +439,12 @@
       <workItem from="1481391692433" duration="7000" />
       <workItem from="1482027905890" duration="266000" />
       <workItem from="1482028191937" duration="535000" />
-      <workItem from="1482456149739" duration="20428000" />
+      <workItem from="1482456149739" duration="22210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98063000" />
+    <option name="totallyTimeSpent" value="99845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -574,32 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="99" lean-forward="false" selection-start-line="12" selection-start-column="99" selection-end-line="12" selection-end-column="99" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/lineitem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="18" column="68" lean-forward="false" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CurrencyBox.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -610,27 +637,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/LineItemRowEdit.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+        <state relative-caret-position="-1743">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#76#95#0" expanded="true" />
-            <element signature="n#!!block;n#handleKeyPress#0;n#App#0" expanded="false" />
-            <element signature="n#!!block;n#handleLineItemEdit#0;n#App#0" expanded="false" />
-            <element signature="n#!!block;n#handleLineItemEditCancel#0;n#App#0" expanded="false" />
-            <element signature="n#!!block;n#handleLineItemAdd#0;n#App#0" expanded="false" />
-            <element signature="e#2770#2976#0" expanded="false" />
-            <element signature="n#!!block;n#makeLineItems#0;n#App#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowEdit#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/OrderPanel.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
+        <state relative-caret-position="-336">
           <caret line="7" column="73" lean-forward="false" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#handleEdit#0;n#LineItemRowDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#handleRemove#0;n#LineItemRowDisplay#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -651,25 +685,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LineItemRowDisplay.jsx">
+    <entry file="file://$PROJECT_DIR$/src/lib/lineitem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state relative-caret-position="-210">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#handleEdit#0;n#LineItemRowDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#handleRemove#0;n#LineItemRowDisplay#0" expanded="false" />
+            <element signature="e#76#95#0" expanded="true" />
+            <element signature="n#!!block;n#handleKeyPress#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#handleLineItemEdit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#handleLineItemEditCancel#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#handleLineItemAdd#0;n#App#0" expanded="false" />
+            <element signature="e#2770#2976#0" expanded="false" />
+            <element signature="n#!!block;n#makeLineItems#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LineItemRowEdit.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemPanel.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1743">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="273">
+          <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/OrderLineItemHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="33" column="71" lean-forward="false" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#handleKeyPress#0;n#LineItemRowEdit#0" expanded="false" />
           </folding>
         </state>
       </provider>

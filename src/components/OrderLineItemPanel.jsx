@@ -15,18 +15,24 @@ import OrderLineItemHeader from './OrderLineItemHeader'
 //    lineItem: the lineItem which is to be edited
 //  onLineItemEditCancel(): fired when a cancel is called on a lineItem.  Used to notify parents of the state change.
 // props:
-//  lineItems: the list of lineItems to display in the LineItemTable
+//  order: the order being edited, lineItems will be displayed in the table
 //  editingLineItem: true if control is currently editing a lineItem
 class OrderLineItemPanel extends Component{
 
   makeHeader(){
-    return <OrderLineItemHeader onAddClick={this.props.onLineItemAdd} buttonDisabled={this.props.editingLineItem} />
+    let lineItemSubtotal = 0;
+    this.props.order.lineItems.forEach((lineItem) => lineItemSubtotal += lineItem.cost.price());
+
+    return <OrderLineItemHeader buttonDisabled={this.props.editingLineItem}
+                                orderSubtotal={this.props.order.subtotal}
+                                lineItemSubtotal={lineItemSubtotal}
+                                onAddClick={this.props.onLineItemAdd} />
   }
 
   render(){
     return(
       <Panel bsStyle="default" header={this.makeHeader()}>
-        <LineItemTable lineItems={this.props.lineItems}
+        <LineItemTable lineItems={this.props.order.lineItems}
                        onLineItemUpdate={this.props.onLineItemUpdate}
                        onLineItemRemove={this.props.onLineItemRemove}
                        onLineItemEdit={this.props.onLineItemEdit}

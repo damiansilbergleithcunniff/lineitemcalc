@@ -140,7 +140,6 @@ class App extends Component {
   }
 
   render() {
-    const lineItems = this.state.order.lineItems;
     const order = this.state.order;
     return (
       <div className="container" tabIndex="0" onKeyUp={this.handleKeyPress}>
@@ -149,7 +148,7 @@ class App extends Component {
                     onShippingChange={this.handleOrderShippingChange}
                     onTaxChange={this.handleOrderTaxChange} />
 
-        <OrderLineItemPanel lineItems={lineItems}
+        <OrderLineItemPanel order={order}
                             editingLineItem={this.state.editingLineItem}
                             onLineItemUpdate={this.handleLineItemUpdate}
                             onLineItemAdd={this.handleLineItemAdd}
