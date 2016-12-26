@@ -33,6 +33,7 @@ class OrderLineItemPanel extends Component{
     return(
       <Panel bsStyle="default" header={this.makeHeader()}>
         <LineItemTable lineItems={this.props.order.lineItems}
+                       disableEditRemoveButtons={this.props.editingLineItem}
                        onLineItemUpdate={this.props.onLineItemUpdate}
                        onLineItemRemove={this.props.onLineItemRemove}
                        onLineItemEdit={this.props.onLineItemEdit}

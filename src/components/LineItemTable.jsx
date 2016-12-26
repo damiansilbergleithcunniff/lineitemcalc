@@ -14,6 +14,7 @@ import LineItemRowEdit from './LineItemRowEdit'
 //  onLineItemEditCancel(): fired when a cancel is called on a lineItem.  Used to notify parents of the state change.
 // props:
 //  lineItems: an array of lineItems to render in the table
+//  disableEditRemoveButtons: if true, edit/remove buttons are disabled on the LineItemRowDisplay elements
 class LineItemTable extends Component {
   constructor(props){
     super(props);
@@ -84,6 +85,8 @@ class LineItemTable extends Component {
   renderDisplayRow(lineItem, n){
     return <LineItemRowDisplay key={lineItem.ASIN} index={n} lineItem={lineItem}
                                onEditRequest={this.handleDisplayRowEditRequest}
+                               canEdit={!this.props.disableEditRemoveButtons}
+                               canRemove={!this.props.disableEditRemoveButtons}
                                onRemoveRequest={this.handleRemoveRow} />
   }
   renderLineItems(){

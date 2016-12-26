@@ -14,6 +14,8 @@ import accounting from 'accounting';
 // props:
 //  index: the index of the lineItem being displayed
 //  lineItem: the lineItem being displayed
+//  canRemove: true if the lineItem can be removed
+//  canEdit: true if the lineItem can be edited
 class LineItemRowDisplay extends Component {
   constructor(props){
     super(props);
@@ -68,8 +70,8 @@ class LineItemRowDisplay extends Component {
          <td>{shipping}</td>
          <td>{tax}</td>
          <td>{quantity}</td>
-         <td><Button onClick={this.handleEdit}><Glyphicon glyph="edit"/></Button></td>
-         <td><Button onClick={this.handleRemove} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
+         <td><Button onClick={this.handleEdit} disabled={!this.props.canEdit ? 'disabled' : ''}><Glyphicon glyph="edit"/></Button></td>
+         <td><Button onClick={this.handleRemove} disabled={!this.props.canRemove ? 'disabled' : ''} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
        </tr>
     );
   }
