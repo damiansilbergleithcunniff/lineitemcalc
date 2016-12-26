@@ -78,6 +78,7 @@ class App extends Component {
     itemToUpdate.ASIN = newValues.ASIN;
     itemToUpdate.quantity = newValues.quantity;
     itemToUpdate.item.cost.price = newValues.price;
+    order.updateLineItems();
     this.setState({
       order: order,
       editingLineItem: false
