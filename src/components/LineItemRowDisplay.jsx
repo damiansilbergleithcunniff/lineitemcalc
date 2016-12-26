@@ -70,8 +70,8 @@ class LineItemRowDisplay extends Component {
          <td>{shipping}</td>
          <td>{tax}</td>
          <td>{quantity}</td>
-         <td><Button onClick={this.handleEdit} disabled={!this.props.canEdit ? 'disabled' : ''}><Glyphicon glyph="edit"/></Button></td>
-         <td><Button onClick={this.handleRemove} disabled={!this.props.canRemove ? 'disabled' : ''} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
+         <td><Button onClick={this.handleEdit} disabled={!this.props.canEdit}><Glyphicon glyph="edit"/></Button></td>
+         <td><Button onClick={this.handleRemove} disabled={!this.props.canRemove} bsStyle="danger"><Glyphicon glyph="remove"/></Button></td>
        </tr>
     );
   }
